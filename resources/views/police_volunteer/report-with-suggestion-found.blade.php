@@ -11,6 +11,7 @@
                  @if(session('success'))
                     <p class="alert alert-success "> {{ session('success') }} </p>
                 @endif
+                <hr>
 
     <div class="row mb-2">
           <div class="col-sm-6">
