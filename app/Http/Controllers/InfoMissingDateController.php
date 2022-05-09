@@ -23,7 +23,15 @@ class InfoMissingDateController extends Controller
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
+     *
      */
+
+    // public function report_with_suggestion(){
+        
+    //     return view('police_volunteer.report-with-suggestion');
+  
+    //  }
+
     public function create()
     {
         // return view('missing.create');
@@ -46,7 +54,6 @@ class InfoMissingDateController extends Controller
             'sub_city' => ['required', 'string', 'max:255'],
             'skin_color' => ['required', 'string'],
             'clothe' => 'required',
-            'glass' => ['string', 'max:255'],
             'shoes' => ['required','string', 'max:255'],
             'health_condition' => 'required',
             // 'medical_problem' => 'string',

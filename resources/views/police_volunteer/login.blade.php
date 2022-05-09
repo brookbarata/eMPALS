@@ -1,4 +1,4 @@
-@extends('layouts.for_auth')
+@extends('layouts.for_police_auth')
 
 @section('content')
 <div class="container mt-5">
@@ -10,12 +10,12 @@
         @endif    
          <div class="col-md-8">
                 <div class="btn btn-outline-light border border-bottom-0  mx-0">
-                        <a style="text-decoration:none; color:black" href="/police_volunteer/login">
+                        <a class="text-center " style="text-decoration:none; color:black" href="/police_volunteer/login">
                         Login as Police/Volunteer
                     </a>
                 </div>
                 <div class="btn  bg-light border ">
-                    <a style="text-decoration:none; " href="/login">
+                    <a class="text-center fw-bold text-primary" style="text-decoration:none; " href="/login">
                     Login as User
                 </a> 
             </div>

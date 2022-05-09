@@ -8,6 +8,12 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'eMPALS') }}</title>
+    <!-- <title>@yield('title')</title>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/128/1178/1178447.png"/>  -->
+ 
+    <!-- Font Awesome Icons -->
+   <link rel="stylesheet" href="{{ asset( 'backend/plugins/fontawesome-free/css/all.min.css') }}">
+ 
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -36,13 +42,13 @@
 
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link  {{ Request::is('police_volunteer/index') ? 'active':'' }} " aria-current="page" href="/police_volunteer/index">Home</a>
+                            <a class="nav-link  {{ Request::is('police_volunteer/index')||Request::is('police_volunteer/list-of-missing-person')||Request::is('police_volunteer/list-of-found-person') ? 'active':'' }} " aria-current="page" href="/police_volunteer/index">Home</a>
                         </li>
                         <li class="nav-item   ">
-                           <a class="nav-link {{ Request::is('police_volunteer/report-missing') ? 'active':'' }}" href="{{ url('/police_volunteer/report-missing') }}">Report Missing Person</a>
+                           <a class="nav-link {{ Request::is('police_volunteer/report-missing')||Request::is('police_volunteer/report-with-suggestion') ? 'active':'' }}" href="{{ url('/police_volunteer/report-missing') }}">Report Missing Person</a>
                         </li>
                         <li class="nav-item   ">
-                           <a class="nav-link {{ Request::is('report-found') ? 'active':'' }}" href="{{ url('/report-found') }}">Locate Found Person</a>
+                           <a class="nav-link {{ Request::is('police_volunteer/report-found')||Request::is('police_volunteer/report-with-suggestion-found') ? 'active':'' }}" href="{{ url('/police_volunteer/report-found') }}">Locate Found Person</a>
                         </li>
                         <li class="nav-item   ">
                            <a class="nav-link {{ Request::is('filter-out') ? 'active':'' }}" href="/filter-out">Filter Out</a>
@@ -73,13 +79,25 @@
                                     </a>
                                 </div>
                         </li>
+                        
+                        <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                   Language
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    </a>
+
+                                </div>
+                            </li>
+
                     </ul>
                     @endif
                 </div>
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-3 mt-5">
             @yield('content')
         </main>
     </div>

@@ -34,7 +34,7 @@ return new class extends Migration
             $table->string('street_name');
             $table->string('house_no');
             $table->string('special_description');
-            $table->string('photo')->nullable();
+            $table->string('photo',300)->nullable();
             $table->boolean('confirmed')->nullable()->default(false);
             $table->timestamps();
         });

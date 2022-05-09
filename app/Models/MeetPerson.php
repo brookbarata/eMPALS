@@ -9,7 +9,7 @@ class MeetPerson extends Model
 {
     use HasFactory;
 
-    
+    public $table='meet_person';
 
     public function user()
     {

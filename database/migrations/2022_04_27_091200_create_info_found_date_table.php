@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('info_found_date', function (Blueprint $table) {
             $table->id()->unsigned();
-            $table->bigInteger('found_id')->unsigned();
-            $table->foreign('found_id')->references('id')->on('found_person')->onDelete('cascade');
+            $table->bigInteger('found_id')->unsigned()->nullable();
+            $table->foreign('found_id','found_id')->references('id')->on('found_person')->onDelete('cascade');
             $table->date('date');
             $table->string('city');
             $table->string('sub_city');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\InfoMissingDate;
 use Illuminate\Http\Request;
 
 class InfoPoliceMissingDateController extends Controller
@@ -20,15 +21,15 @@ class InfoPoliceMissingDateController extends Controller
      */
     public function create()
     {
-        // return view('missing.create');
+        return view('police_volunteer/report-with-suggestion');
 
     }
 
-    public function report_with_suggestion(){
+    // public function report_with_suggestion(){
         
-        return view('police_volunteer.report-with-suggestion');
+    //     return view('police_volunteer/report-with-suggestion');
   
-     }
+    //  }
     /**
      * Store a newly created resource in storage.
      *
@@ -45,17 +46,11 @@ class InfoPoliceMissingDateController extends Controller
             'sub_city' => ['required', 'string', 'max:255'],
             'skin_color' => ['required', 'string'],
             'clothe' => 'required',
-            'glass' => ['string', 'max:255'],
             'shoes' => ['required','string', 'max:255'],
-            'health_condition' => 'required',
             // 'medical_problem' => 'string',
         ]);
 
-        
-         // $missingPerson = auth()->user()->missingPerson()->latest();
-        //   $missingPerson->infoMissingDate()->create($validateData);
-
-                   
+    
 
             $missing = new InfoMissingDate();
             $missing->missing_id =\Session::get('missing_id');
@@ -71,7 +66,6 @@ class InfoPoliceMissingDateController extends Controller
         
             $missing->save();
             return redirect('police_volunteer/index')->with('success', 'You have  added missing person succesfully');
-    
         
     }
 

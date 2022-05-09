@@ -5,12 +5,12 @@
         <div class="row justify-content-center">
         <div class="col-md-8">
                 <div class="btn btn-outline-light border mx-0">
-                        <a style="text-decoration:none;" href="/police_volunteer/login">
+                        <a class="text-center  fw-bold text-primary" style="text-decoration:none;" href="/police_volunteer/login">
                         Login as Police/Volunteer
                     </a>
                 </div>
                 <div class="btn  bg-light border border-bottom-0 border-right-0">
-                    <a style="text-decoration:none; color:black" href="/login">
+                    <a class="text-center" style="text-decoration:none; color:black" href="/login">
                     Login as User
                 </a> 
             </div>

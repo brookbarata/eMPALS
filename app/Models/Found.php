@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Found extends Model
 {
     use HasFactory;
-    protected $table = 'found_person';
+    public $table = 'found_person';
     protected $primarykey = 'id';
     protected $fillable = ['fname','mname','lname','age', 'gender','height','weight','region','city','sub_city','street_name','house_no','special_description','photo','confirmed'];
 

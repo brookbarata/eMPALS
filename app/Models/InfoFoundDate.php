@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class InfoFoundDate extends Model
 {
     use HasFactory;
-    protected $table = 'info_found_date';
+    public $table = 'info_found_date';
+    protected $primarykey = 'id';
     protected $fillable = ['date','city','sub_city','clothe','glass','shoes','health_condition','medical_problem'];
    
     public function found()

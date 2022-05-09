@@ -6,7 +6,7 @@
 
    <h3 class="text-center fw-bold">Filter-Out for a Missing Person</h3>
     <hr>
-    <div class="alert alert-danger p-2" role="alert">
+    <div class="alert alert-info p-2" role="alert">
        Fill in the attribute you want to be searched by and hit <span class="fw-bold">Filter-Out</span> button.
     </div>
       <form>

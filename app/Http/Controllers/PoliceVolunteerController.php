@@ -21,7 +21,7 @@ class PoliceVolunteerController extends Controller
         ]);
 
         if (Auth::guard('police_volunteer')->attempt(['email' => $request->email, 'password' => $request->password],$request->get('remember'))) {
-            return redirect()->route('police_volunteer.dashboard');
+            return redirect()->route('police_volunteer.index');
         }
          else {
             session()->flash('error','Either Email/Password is incorrect');
@@ -42,6 +42,10 @@ class PoliceVolunteerController extends Controller
     public function manage_police_volunteer(){
     
         return view('admin.manage_police_volunteer');
+    }
+
+    public function index(){
+        return view('police_volunteer.index');
     }
 
     public function store(Request $request)

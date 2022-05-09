@@ -1,0 +1,87 @@
+@extends('layouts.police_volunteer_app')
+
+@section('content')
+
+<div class="container-fluid"> 
+    <div class="row">
+    <div class="row mx-0 mb-1">
+           <div class="d-grid col-sm-3 mx-auto">
+           <nav aria-label="breadcrumb" class="bg-light">
+                    <ol class="breadcrumb my-1 px-0">
+                        <li class="breadcrumb-item"><a href="/police_volunteer/index">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">List of Found Persons</li>
+                    </ol>
+                    </nav>
+            </div>
+            <form class="d-grid gap-2 col-sm-3 mx-auto">
+                    <div class="d-flex">
+                        <input class="form-control me-2 rounded" type="search" placeholder="Search Found Person Here..."  aria-label="Search">
+                        <button class="btn btn-outline-primary" type="submit">Search</button>
+                    </div>
+            </form>
+    </div>
+        <div class="col-sm-9 mx-auto">
+        <div class="card">
+            <div style="letter-spacing:0.1em;" class="fw-bold card-header h3 p-0 alert alert-light rounded my-1 text-center ">
+                    List of Found Person Reports
+            </div>
+            <p class="text-center alert alert-warning py-0 px-1 mx-1">Please respond us if you know these found persons, we want to meet them with their parents.</p>
+       
+        </div>    
+        <div class="container">
+        @if(count($found) > 0)
+                   <?php
+                    $colcount = count($found);
+                    $i = 1;
+                  ?>
+                    <div>
+                    <div class="row text-center">
+                        @foreach($found as $item)
+                        @if($i == $colcount)
+                            <div class='md-4 col end'>
+                                  <img src="{{ asset($item->photo) }}" height="170" width="170" class="img " />
+                            <br>
+                            <h5 class ="fw-bold text-danger">{{$item->fname}}  {{$item->mname}}</h5>
+                            <h6>{{$item->fname}}  {{$item->mname}}</h6>
+                            <div class="btn-group">
+                            <a href="{{ route('list-of-found-person.show', $item)  }}"><button class="py-0  btn btn-sm btn-outline-secondary">View</button></a>
+                            <a href="http://"><button class="py-0  btn btn-sm btn-outline-secondary">Respond</button></a>
+                            </div>
+                        @else
+                            <div class='md-4 col' >
+                                  <img src="{{ asset($item->photo) }}" height="170" width="170" class="img " />
+                            <br>
+                            <h5 class ="fw-bold text-danger">{{$item->fname}}  {{$item->mname}}</h5>
+                            <h6>{{$item->fname}}  {{$item->mname}}</h6>
+                            <div class="btn-group mt-0">
+                            <a href="{{ route('list-of-found-person.show', $item)  }}"><button class="py-0 btn btn-sm btn-outline-secondary">View</button></a>
+                            <a href="http://"><button class="py-0 btn btn-sm btn-outline-secondary">Respond</button></a>
+                            </div>
+                       @endif
+                            @if($i % 4 == 0)
+                        </div>
+                        </div>
+                        <div class="row text-center">
+                            @else
+                            </div>
+                        @endif
+                            <?php $i++; ?>
+                        @endforeach
+                    </div>
+                    </div>
+                @else
+                <div class="container">
+                <div class="row  text-center">
+                    <p>No Found Person List To Display</p>
+                </div>
+                </div>                @endif
+
+                <div class="card-footer">
+                    {{ $found->links()}}
+                </div>
+                </div>
+      </div>
+    </div>
+ </div> 
+ </div>
+@endsection

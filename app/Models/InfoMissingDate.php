@@ -7,9 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class InfoMissingDate extends Model
 {
+
     use HasFactory;
 
-    protected $table = 'info_missing_date';
+
+    public $table = 'info_missing_date';
+    protected $primarykey = 'id';
     protected $fillable = ['date','city','sub_city','skin_color','clothe','glass','shoes','health_condition','medical_problem'];
    
 
@@ -17,7 +20,8 @@ class InfoMissingDate extends Model
     {
         return $this->belongsTo(Missing::class);
     }
-    public function PoliceMissing(){
-        return $this->belongsTo(PoliceVolunteerMissingPerson::class);
+    public function police_missing(){
+
+        return $this->belongsTo(PoliceVolunteerMissingPerson::class, 'missing_id');
     }
 }

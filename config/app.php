@@ -136,6 +136,11 @@ return [
     |
     */
 
+
+    'aliases' => [
+        'Share' => Jorenvh\Share\ShareFacade::class,
+    ],
+
     'providers' => [
 
         /*
@@ -195,3 +200,5 @@ return [
     ])->toArray(),
 
 ];
+
+

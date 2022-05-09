@@ -3,18 +3,18 @@
 @section('content')
     
 <div class="container">  
-<h3 class="text-center fw-bold">Report Missing Person</h3>
+<h3 class="text-center fw-bold">Report Found Person</h3>
 
     <div class="row  row-cols-sm-1 row-cols-md-2 g-3">
                 <div class=" col-md-8">
                     <div class="alert alert-warning p-2" role="alert">
-                   Please insert some valid inputs Thank you!
+                   Please insert some valid values, Thank you!
                     </div>
-      <form method="POST" action="{{ route('police_volunteer_missing.store') }}" enctype="multipart/form-data">
+      <form method="POST" action="{{ route('police_volunteer_found.store') }}" enctype="multipart/form-data">
          @csrf
         <div class="row row-cols-sm-1 mt-1 ">
             <div class="col">
-                <h4 class="fw-bold">Basic Information About Missing Person</h4>
+                <h4 class="fw-bold">Basic Information About Found Person</h4>
             </div>
         </div>
             <div class="row row-cols-1 row-cols-sm-2 g-3">
@@ -103,14 +103,14 @@
             <div class="col">
                 <textarea type="text" class="form-control" required name="special_description" placeholder="Special Markings -such as tattoos, birthmarks, scars, etc." ></textarea>
                 </div>
-            <div class="col"> 
-                <input type="file" class="form-control" accept=".jpg,.png,.gif,.webp" name="photo"id="photo" >
-                <label class="alert alert-warning p-0 px-4" for="file">!!! Upload here the most recent picture of missing person.</label>  
+            <div class="col">
+                <input type="file" class="form-control" accept=".jpg,.png,.gif,.webp" name="photo">
+                <label class="alert alert-warning p-0 px-4" for="file">!!! Upload here the most recent picture of found person.</label>  
             </div>
         </div>
         <div class="row row-cols-1 row-cols-sm-1 mt-1 ">
             <div class="col">
-            <button type="submit" value="Save" class="btn btn-dark">Save and Goto Next Page</button>
+            <button type="submit" class="btn btn-dark">Save and Goto Next Page</button>
         </div>
         </div>
     </form>
@@ -119,7 +119,7 @@
 
         </div>
                 <div class ="col-md-3">
-                        <h5 class="text-center bg-dark rounded p-1 text-white">How eMPALS works to find missing person?</h5>
+                        <h5 class="text-center bg-dark rounded p-1 text-white">How eMPALS works to find found person?</h5>
                         <div  class=" bg-light rounded card-body">
                             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minima placeat sapiente harum, sunt enim nisi aliquam nulla eaque, quod fuga corporis, deleniti consectetur soluta fugiat reprehenderit architecto ut! Dolores, harum?
                     </div>

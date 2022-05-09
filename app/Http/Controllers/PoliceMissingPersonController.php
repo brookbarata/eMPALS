@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Auth;
 class PoliceMissingPersonController extends Controller
 {
     //
-    public function report_missing(){
+
+    public function create(){
         
         return view('police_volunteer.report-missing');
   
@@ -19,7 +20,6 @@ class PoliceMissingPersonController extends Controller
      
      public function store(Request $request)
      {
-         // $id=Auth::user()->id;
              $request->validate([
                  'user_id'=>'max:255',
                  'fname' => ['required', 'string', 'max:255'],
@@ -37,12 +37,14 @@ class PoliceMissingPersonController extends Controller
                  'street_name' => ['required', 'string', 'max:255'],
                  'house_no' => ['required', 'string', 'max:255'],
                  'special_description' => ['required', 'string', 'max:255'],
+                 
              ]);
      
                 $id=\DB::select("SHOW TABLE STATUS LIKE 'missing_person'");
                 $next_id=$id[0]->Auto_increment;
                 \Session::put('missing_id', $next_id);   
 
+                
                  $missing = new PoliceVolunteerMissingPerson();
                  $missing->police_id = Auth::user()->id;
                  $missing->fname = $request->fname;
@@ -60,9 +62,14 @@ class PoliceMissingPersonController extends Controller
                  $missing->street_name = $request->street_name;
                  $missing->house_no = $request->house_no;
                  $missing->special_description = $request->special_description;
-             
+                 $missing->confirmed = 1;
+
+                 $fileName = time().$request->file('photo')->getClientOriginalName();
+                 $path = $request->file('photo')->storeAs('images', $fileName, 'public');
+
+                 $missing["photo"] = '/storage/'.$path;
+
                  $missing->save();
-                
                  return redirect('police_volunteer/report-with-suggestion')->with('success', 'Reports Frist Part added, go ahead.');
          
      }

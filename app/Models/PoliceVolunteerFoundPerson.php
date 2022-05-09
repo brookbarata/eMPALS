@@ -9,6 +9,11 @@ class PoliceVolunteerFoundPerson extends Model
 {
     use HasFactory;
 
+    public $table = 'found_person';
+    protected $primarykey = 'id';
+    protected $fillable = ['user_id','police_id','fname','mname','lname','age', 'gender', 'brith_place','nick_name','height','weight','region','city','sub_city','street_name','house_no','special_description','photo','confirmed'];
+   
+
     public function info_found_date(){
         return $this->hasOne(InfoFoundDate::class);
     }

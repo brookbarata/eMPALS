@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('info_missing_date', function (Blueprint $table) {
             $table->id()->unsigned();
             $table->bigInteger('missing_id')->unsigned()->nullable();
-            $table->foreign('missing_id')->references('id')->on('missing_person')->onDelete('cascade');
+            $table->foreign('missing_id','missing_id')->references('id')->on('missing_person')->onDelete('cascade');
             $table->date('date');
             $table->string('city');
             $table->string('sub_city');

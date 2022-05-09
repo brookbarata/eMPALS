@@ -96,7 +96,7 @@
                 <input type="text" class="form-control" required name="street_name" placeholder="Street" >
                 </div>
             <div class="col">
-                <input type="number" class="form-control" required name="house_no" placeholder="House Number">
+                <input type="text" class="form-control" required name="house_no" placeholder="House Number">
               </div>
         </div>
         <div class="row row-cols-1 row-cols-sm-2  mt-1 g-3">

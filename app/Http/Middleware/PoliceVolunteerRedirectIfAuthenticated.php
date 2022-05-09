@@ -21,7 +21,7 @@ class PoliceVolunteerRedirectIfAuthenticated
     {
 
             if (Auth::guard('police_volunteer')->check()) {
-                return redirect()->route('police_volunteer.dashboard');
+                return redirect()->route('police_volunteer.index');
             }
 
         return $next($request);
