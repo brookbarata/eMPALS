@@ -33,6 +33,20 @@
                         <button type="button" class="btn btn-primary">Respond</button>
                         <button type="button" class="btn btn-outline-primary ms-1">See Photo </button>
                         </div>
+                        <div class="p-1">
+                                <!-- Facebook -->
+                               <a href="" class="px-1"> <i class="fab fa-facebook-f"></i></a>
+                                <!-- Telegram -->
+                                <a href="" class="px-1"> <i class="fab fa-telegram"></i></a>
+                                <!-- Twitter -->
+                                <a href="" class="px-1"><i class="fab fa-twitter"></i></a>
+                                <!-- Instagram -->
+                                <a href="" class="px-1"><i class="fab fa-instagram"></i></a>
+                                <!-- Mail -->
+                                <a href="mailto:brook.barata@gmail.com?subject=Missing%Person&amp;body=Hello%20eMPALS"class="px-1"> <i class="fas fa-envelope"></i></a>
+                                <!-- Whatsapp -->
+                                <a href="" class="px-1"><i class="fab fa-whatsapp"></i></a>
+                     </div>
                     </div>
                     </div>
                 </div>
@@ -128,13 +142,5 @@
             </section>
         </div>
     </div>
-
-
-
-
-    
-
-
-
 </div>
 @endsection

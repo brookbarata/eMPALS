@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\PoliceVolunteerMissingPerson;
+use App\Models\Missing;
+use App\Models\Found;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Auth;
@@ -45,7 +46,7 @@ class PoliceMissingPersonController extends Controller
                 \Session::put('missing_id', $next_id);   
 
                 
-                 $missing = new PoliceVolunteerMissingPerson();
+                 $missing = new Missing();
                  $missing->police_id = Auth::user()->id;
                  $missing->fname = $request->fname;
                  $missing->mname = $request->mname;
@@ -68,6 +69,13 @@ class PoliceMissingPersonController extends Controller
                  $path = $request->file('photo')->storeAs('images', $fileName, 'public');
 
                  $missing["photo"] = '/storage/'.$path;
+
+
+
+
+
+                 
+
 
                  $missing->save();
                  return redirect('police_volunteer/report-with-suggestion')->with('success', 'Reports Frist Part added, go ahead.');

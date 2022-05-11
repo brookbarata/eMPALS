@@ -1,0 +1,108 @@
+@extends('layouts.police_volunteer_app')
+
+@section('content')
+    
+   <div class="container mt"> 
+
+   <h3 class="text-center fw-bold">Filter-<span class="text-danger fw-bold">Out</span> </h3>
+    <hr>
+    <div class="alert alert-info p-2" role="alert">
+       Fill in the attribute you want to be searched by and hit <span class="fw-bold">Filter-<span class="text-danger">Out</span></span> button.
+    </div>
+      <form action="{{ route('filter-out.store') }}" method="POST">
+      @csrf
+            <div class="row form-row align-items-center">
+                <div class="col-md-4">
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">First Name</div>
+                        </div>
+                        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Filter by First Name">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">Middle Name</div>
+                        </div>
+                        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Filter by Middle Name">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">Last Name</div>
+                        </div>
+                        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Filter by Last Name">
+                    </div>
+                </div>
+            </div>
+            <div class="row form-row align-items-center">
+                <div class="col-md-4">
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">Age</div>
+                        </div>
+                        <input type="number" class="form-control" id="inlineFormInputGroup" placeholder="Filter by Age">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">Special Markings</div>
+                        </div>
+                        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Filter by Special Descriptions">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">Missing/Found Date</div>
+                        </div>
+                        <input type="date" class="form-control" id="inlineFormInputGroup">
+                    </div>
+                </div>
+                </div>
+                <div class="row form-row align-items-center">
+                <div class="col-md-4">
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">City</div>
+                        </div>
+                        <input type="number" class="form-control" id="inlineFormInputGroup" placeholder="Filter by City">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">Sub City</div>
+                        </div>
+                        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Filter by Sub City">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio"  name="is_it" id="gridRadios1" value="missing">
+                            <label class="form-check-label fw-bold" for="gridRadios1">Filter in Missing </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="is_it" id="gridRadios2" value="Found">
+                            <label class="form-check-label fw-bold" for="gridRadios2">Filter in Found </label>
+                    </div>
+                 </div>
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-2 mt-4">
+                </div>
+                <div class="col-md-2 mt-4">
+                    <div class="mb-2">
+                        <button type="submit" class="form-control btn btn-dark fw-bold">Filter-<span class="text-danger">Out</span></button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+      </form>
+
+@endsection

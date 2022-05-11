@@ -35,26 +35,9 @@ class MissingController extends Controller
         return view('missing.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        // $id=Auth::user()->id;
-//  $validateData = 
+
       $request->validate([
                 'fname' => ['required', 'string', 'max:255'],
                 'mname' => ['required', 'string', 'max:255'],
@@ -74,9 +57,6 @@ class MissingController extends Controller
             ]);
 
             
-             // $missingPerson = auth()->user()->missingPerson()->latest();
-            //   $missingPerson->infoMissingDate()->create($validateData);
-    
                 $id=\DB::select("SHOW TABLE STATUS LIKE 'missing_person'");
                 $next_id=$id[0]->Auto_increment;
                 \Session::put('missing_id', $next_id);   
@@ -101,53 +81,26 @@ class MissingController extends Controller
                 $missing->special_description = $request->special_description;
              
                 $missing->save();
-                // $id=DB::select("SHOW TABLE STATUS LIKE 'missing_person'");
-                // $next_id=$id[0]->Auto_increment;
-                // Session::put('missing_id', $$next_id);
                 return redirect('report-with-suggestion')->with('success', 'You have added Frist part Of Missing Person Report');
         
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Missing  $missing
-     * @return \Illuminate\Http\Response
-     */
     public function show(Missing $missing)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Missing  $missing
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Missing $missing)
     {
-        //
+       
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Missing  $missing
-     * @return \Illuminate\Http\Response
-     */
+  
     public function update(Request $request, Missing $missing)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Missing  $missing
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Missing $missing)
     {
         //

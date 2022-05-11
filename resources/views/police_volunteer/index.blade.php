@@ -4,7 +4,7 @@
 
 <div class="container-fluid"> 
    @if(session('success'))
-     <p class="alert alert-success"> {{ session('success') }} </p>
+     <p class="alert alert-success mx-5"> {{ session('success') }} </p>
    @endif
             <form class="d-grid gap-2 col-sm-6 mx-auto mb-3">
                     <div class="d-flex">
@@ -30,8 +30,8 @@
   </section>
   </div>
   <div class="col-sm-4">
-  <main class="px-3 card card-body ">
-  <h1> <span class= "d-grid fw-bold p-1 text-center text-gray border-white  rounded m-1"> Ethiopian eMPALS </span></h1>
+  <main class="px-3 card card-body mx-1 ">
+  <h1> <span class= "d-grid fw-bold p-1  text-center text-gray border-white  rounded m-1"> Ethiopian eMPALS </span></h1>
                     <p class="lead text-center"> eMPALS, Inc. is a domestic non-profit corporation. We are comprised of a team of private investigators and citizens who selflessly dedicate themselves to investigating and locating missing persons, recover human trafficking victims, and advocate for missing indigenous persons.  It makes no difference the age of the loved one or how long they have been missing. We strive to offer support to the families who are going through this difficult time.
                     <a href="#" class="btn btn-sm btn-secondary  border-white bg-black">Learn more...</a>
                     </p>

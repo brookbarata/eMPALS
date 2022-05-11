@@ -51,17 +51,17 @@
                            <a class="nav-link {{ Request::is('police_volunteer/report-found')||Request::is('police_volunteer/report-with-suggestion-found') ? 'active':'' }}" href="{{ url('/police_volunteer/report-found') }}">Locate Found Person</a>
                         </li>
                         <li class="nav-item   ">
-                           <a class="nav-link {{ Request::is('filter-out') ? 'active':'' }}" href="/filter-out">Filter Out</a>
+                           <a class="nav-link {{ Request::is('police_volunteer/filter-out') ? 'active':'' }}" href="{{ url('/police_volunteer/filter-out') }}">Filter Out</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/statistics">Statistics</a>
+                            <a class="nav-link {{ Request::is('police_volunteer/statistics') ? 'active':'' }}" href="{{ url('/police_volunteer/statistics') }}">Statistics</a>
                         </li>
                         <li class="nav-item dropdown  ">
-                            <a class="nav-link dropdown-toggle {{ Request::is('contact') ? 'active':'' }}" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">More</a>
+                            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">More</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="#">Help</a></li>
-                            <li><a class="dropdown-item" href="#">Contact Us</a></li>
-                            <li><a class="dropdown-item" href="#">My Reports</a></li>
+                            <li><a class="dropdown-item" href="{{ url('/police_volunteer/help') }}">Help</a></li>
+                            <li><a class="dropdown-item" href="{{ url('/police_volunteer/contact-us') }}">Contact Us</a></li>
+                            <li><a class="dropdown-item" href="{{ url('/police_volunteer/my-reports') }}">My Reports</a></li>
                         </ul>
                         </li>
                     </ul>

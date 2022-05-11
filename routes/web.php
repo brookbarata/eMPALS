@@ -9,6 +9,7 @@ use App\Http\Controllers\InfoPoliceMissingDateController;
 use App\Http\Controllers\FoundController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ShareSocialController; 
+use App\Http\Controllers\MyReportsController; 
 
 
 
@@ -55,9 +56,14 @@ use App\Http\Controllers\ShareSocialController;
             Route::resource('list-of-missing-person', MissingPersonProfileController::class);
             Route::resource('list-of-found-person', FoundPersonProfileController::class);
 
+            Route::resource('my-reports',MyReportsController::class);
 
-            // Route::get('/list-of-missing-person', [App\Http\Controllers\MissingPersonListController::class, 'index'])->name('police_volunteer.list-of-missing-person');
-            // Route::get('/list-of-found-person', [App\Http\Controllers\FoundPersonListController::class, 'index'])->name('police_volunteer.list-of-found-person');
+
+            Route::get('/help', [App\Http\Controllers\HelpController::class, 'index'])->name('police_volunteer.help');
+            Route::get('/contact-us', [App\Http\Controllers\ContactUsController::class, 'index'])->name('police_volunteer.contact-us');
+            Route::get('/filter-out', [App\Http\Controllers\FilterOutController::class, 'index'])->name('police_volunteer.filter-out');
+            Route::post('/filter-out/store',[App\Http\Controllers\FilterOutController::class, 'store'])->name('filter-out.store');
+            Route::get('/statistics', [App\Http\Controllers\StatisticsController::class, 'index'])->name('police_volunteer.statistics');
         
            
             Route::post('/police_volunteer_missing',[App\Http\Controllers\PoliceMissingPersonController::class, 'store'])->name('police_volunteer_missing.store');

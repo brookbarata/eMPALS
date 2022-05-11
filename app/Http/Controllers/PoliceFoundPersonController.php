@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\PoliceVolunteerFoundPerson;
+use App\Models\Found;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Auth;
@@ -46,7 +46,7 @@ class PoliceFoundPersonController extends Controller
                 $next_id=$id[0]->Auto_increment;
                 \Session::put('found_id', $next_id);   
 
-                $found = new PoliceVolunteerFoundPerson();
+                $found = new Found();
                  $found->police_id = Auth::user()->id;
                  $found->fname = $request->fname;
                  $found->mname = $request->mname;
