@@ -7,6 +7,9 @@
 
     <div class="row  row-cols-sm-1 row-cols-md-2 g-3">
                 <div class=" col-md-8">
+                @if(session('danger'))
+                    <p class="alert alert-danger "> {{ session('danger') }} </p>
+                @endif
                     <div class="alert alert-warning p-2" role="alert">
                    Please insert some valid inputs Thank you!
                     </div>

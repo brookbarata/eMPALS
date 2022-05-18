@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\InfoFoundDate;
-use App\Models\Found;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
+use App\Models\Missing;
 
 
-
-class InfoFoundDateController extends Controller
+class RespondMissingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +15,7 @@ class InfoFoundDateController extends Controller
      */
     public function index()
     {
-        //
+        return view('police_volunteer.respond-missing');
     }
 
     /**
@@ -28,7 +25,7 @@ class InfoFoundDateController extends Controller
      */
     public function create()
     {
-        //
+       
     }
 
     /**
@@ -45,21 +42,23 @@ class InfoFoundDateController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\InfoFoundDate  $infoFoundDate
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(InfoFoundDate $infoFoundDate)
+    public function show($id)
     {
-        //
+        $profile = Missing::find($id);
+
+        return view('police_volunteer.respond-missing', compact('profile'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\InfoFoundDate  $infoFoundDate
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(InfoFoundDate $infoFoundDate)
+    public function edit($id)
     {
         //
     }
@@ -68,10 +67,10 @@ class InfoFoundDateController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\InfoFoundDate  $infoFoundDate
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, InfoFoundDate $infoFoundDate)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -79,10 +78,10 @@ class InfoFoundDateController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\InfoFoundDate  $infoFoundDate
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(InfoFoundDate $infoFoundDate)
+    public function destroy($id)
     {
         //
     }

@@ -3,6 +3,10 @@
 @section('content')
     <div class="container mt-5">
         <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+    <h2>Login to <span class="text-primary fw-bold" >eMPALS</span></h2>
+      <p>Ethiopian Electronic Missing Person Announcement and Locating System.</p>
+   </div>  
         <div class="col-md-8">
                 <div class="btn btn-outline-light border mx-0">
                         <a class="text-center  fw-bold text-primary" style="text-decoration:none;" href="/police_volunteer/login">

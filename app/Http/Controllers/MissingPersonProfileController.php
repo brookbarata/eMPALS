@@ -35,6 +35,7 @@ class MissingPersonProfileController extends Controller
         return view('police_volunteer.missing-person-profile', compact('profile'));
     }
 
+
     public function edit($id)
     {
         $data['missing_report'] = Missing::find($id);

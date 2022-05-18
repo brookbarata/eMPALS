@@ -12,6 +12,9 @@
                 @if(session('success'))
      <p class="alert alert-success"> {{ session('success') }} </p>
    @endif
+   @if(session('danger'))
+     <p class="alert alert-danger"> {{ session('danger') }} </p>
+   @endif
    <hr>
     
      <div class="row mb-2">
@@ -95,8 +98,7 @@
    <div class ="col-md-4">
                         <h5 class="text-center bg-dark rounded p-2 text-white">Your Suggestions Here...</h5>
                         <div  class=" bg-light rounded card-body">
-                              Oh, Noops! You don't have any Suggestions.
-                      </div>
+            
                 </div>
             </div>
 </div>

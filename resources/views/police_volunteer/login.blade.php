@@ -3,6 +3,10 @@
 @section('content')
 <div class="container mt-5">
     <div class="row justify-content-center">
+    <div class="col-md-8 text-center">
+    <h2>Login to <span class="text-primary fw-bold" >eMPALS</span></h2>
+      <p>Ethiopian Electronic Missing Person Announcement and Locating System.</p>
+   </div>  
     @if(Session::get('error'))
         <div class="col-md-8">
             <div class="alert alert-danger">{{ Session::get('error') }}</div>    

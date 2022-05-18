@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\InfoMissingDate;
+use App\Models\Missing;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
 
 class InfoMissingDateController extends Controller
 {
@@ -49,7 +52,7 @@ class InfoMissingDateController extends Controller
       
         $request->validate([
             
-            'date' => ['required', 'date'],
+            'date' => 'required|date|before:tomorrow',
             'city' => ['required', 'string', 'max:255'],
             'sub_city' => ['required', 'string', 'max:255'],
             'skin_color' => ['required', 'string'],
@@ -60,24 +63,42 @@ class InfoMissingDateController extends Controller
         ]);
 
         
-         // $missingPerson = auth()->user()->missingPerson()->latest();
-        //   $missingPerson->infoMissingDate()->create($validateData);
+        
+        $missing = new Missing();
+        $missing->fname =\Session::get('fname');
+        $missing->mname =\Session::get('mname');
+        $missing->lname =\Session::get('lname');
+        $missing->age =\Session::get('age');
+        $missing->brith_place =\Session::get('brith_place');
+        $missing->city =\Session::get('city');
+        $missing->sub_city =\Session::get('sub_city');
+        $missing->gender =\Session::get('gender');
+        $missing->nick_name =\Session::get('nick_name');
+        $missing->height =\Session::get('height');
+        $missing->weight =\Session::get('weight');
+        $missing->region =\Session::get('region');
+        $missing->street_name =\Session::get('street_name');
+        $missing->house_no =\Session::get('house_no');
+        $missing->special_description =\Session::get('special_description');
+        $missing->photo =\Session::get('photo');
+
+        $missing->save();
 
                    
 
-            $missing = new InfoMissingDate();
-            $missing->missing_id =\Session::get('missing_id');
-            $missing->date = $request->date;
-            $missing->city = $request->city;
-            $missing->sub_city = $request->sub_city;
-            $missing->skin_color = $request->skin_color;
-            $missing->clothe = $request->clothe;
-            $missing->glass = $request->glass;
-            $missing->shoes = $request->shoes;
-            $missing->health_condition = $request->health_condition;
-            $missing->medical_problem = $request->medical_problem;
+            $missing_date = new InfoMissingDate();
+            $missing_date->missing_id =\Session::get('missing_id');
+            $missing_date->date = $request->date;
+            $missing_date->city = \Session::get('city');
+            $missing_date->sub_city = $request->sub_city;
+            $missing_date->skin_color = $request->skin_color;
+            $missing_date->clothe = $request->clothe;
+            $missing_date->glass = $request->glass;
+            $missing_date->shoes = $request->shoes;
+            $missing_date->health_condition = $request->health_condition;
+            $missing_date->medical_problem = $request->medical_problem;
         
-            $missing->save();
+            $missing_date->save();
             return redirect('/home')->with('success', 'You have  added missing person succesfully');
     
         

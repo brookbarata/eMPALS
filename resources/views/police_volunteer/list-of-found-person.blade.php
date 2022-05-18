@@ -45,7 +45,7 @@
                             <h6>{{$item->fname}}  {{$item->mname}}</h6>
                             <div class="btn-group">
                             <a href="{{ route('list-of-found-person.show', $item)  }}"><button class="py-0  btn btn-sm btn-outline-secondary">View</button></a>
-                            <a href="http://"><button class="py-0  btn btn-sm btn-outline-secondary">Respond</button></a>
+                            <a href="{{ route('respond-found.show', $item)  }}"><button class="py-0  btn btn-sm btn-outline-secondary">Respond</button></a>
                             </div>
                         @else
                             <div class='md-4 col' >
@@ -55,7 +55,7 @@
                             <h6>{{$item->fname}}  {{$item->mname}}</h6>
                             <div class="btn-group mt-0">
                             <a href="{{ route('list-of-found-person.show', $item)  }}"><button class="py-0 btn btn-sm btn-outline-secondary">View</button></a>
-                            <a href="http://"><button class="py-0 btn btn-sm btn-outline-secondary">Respond</button></a>
+                            <a href="{{ route('respond-found.show', $item)  }}"><button class="py-0 btn btn-sm btn-outline-secondary">Respond</button></a>
                             </div>
                        @endif
                             @if($i % 4 == 0)

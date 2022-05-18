@@ -11,6 +11,9 @@
                  @if(session('success'))
                     <p class="alert alert-success "> {{ session('success') }} </p>
                 @endif
+                @if(session('danger'))
+                    <p class="alert alert-danger "> {{ session('danger') }} </p>
+                @endif
                 <hr>
 
     <div class="row mb-2">
@@ -53,7 +56,7 @@
             <div class="row row-cols-1 row-cols-sm-2 g-3 mt-1">
                 <div class="col">
                 <label class="form-control-label fw-bold" >Style and Color of Clothe</label>
-                <textarea type="text" class="form-control" required name="clothe" placeholder="Clothe found person wear last time before lost..."></textarea>
+                <textarea type="text" class="form-control"  name="clothe" placeholder="Clothe found person wear last time before lost..."></textarea>
                 </div>
                 <div class="col">
                 <label class="form-control-label fw-bold" >Type and Color of Spectacle</label>

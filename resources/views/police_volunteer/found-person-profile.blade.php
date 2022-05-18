@@ -27,11 +27,11 @@
                         <img src="{{ asset($profile->photo) }}" alt="{{$profile->fname}} {{$profile->mname}}"
                         class="rounded-circle img-fluid" style="width: 150px;">
                         <h5 class="my-2 fw-bold text-danger">{{$profile->fname}} {{$profile->mname}} {{$profile->lname}}</h5>
-                        <p class="text-muted mb-1"><span class="fw-bold">Found Since:</span> {{$profile->info_found_date->date}}</p>
-                        <p class="text-muted mb-4"><span class="fw-bold">In Find him/her:</span> {{$profile->info_found_date->city}} , {{$profile->info_found_date->sub_city}}</p>
+                        <p class="text-muted mb-1"><span class="fw-bold">Found Since:</span> {{date('M D Y', strtotime($profile->info_found_date->date))}}</p>
+                        <p class="text-muted mb-4"><span class="fw-bold">I Find him/her:</span> {{$profile->info_found_date->city}} , {{$profile->info_found_date->sub_city}}</p>
                         <div class="d-flex justify-content-center mb-2">
-                        <button type="button" class="btn btn-primary">Respond</button>
-                        <button type="button" class="btn btn-outline-primary ms-1">See Photo </button>
+                        <a href="{{ route('respond-found.show', $profile->id)  }}"> <button type="button" class="btn btn-primary">Respond</button></a>
+                        <a href="{{ $profile->photo }}"> <button type="button" class="btn btn-outline-primary ms-1">See Photo </button></a>
                         </div>
                         <div class="p-1">
                                 <!-- Facebook -->
@@ -131,7 +131,7 @@
                         </div>
                         <div class="col-sm-9">
                             <p class="text-muted mb-0">{{$profile->fname}} was found at the {{$profile->info_found_date->city}} in {{$profile->info_found_date->sub_city}},
-                                  on {{$profile->info_found_date->date}}. I found {{$profile->fname}} who is missing and is not contact with family since this time. 
+                                  on {{date('M D Y', strtotime($profile->info_found_date->date))}}. I found {{$profile->fname}} who is missing and is not contact with family since this time. 
                                  Anyone who knows {{$profile->fname}} is urged to contact us through social links or by responding us. </p>
                         </div>
                         </div>
