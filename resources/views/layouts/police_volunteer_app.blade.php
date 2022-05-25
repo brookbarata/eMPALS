@@ -45,10 +45,10 @@
                             <a class="nav-link  {{ Request::is('police_volunteer/index')||Request::is('police_volunteer/list-of-missing-person')||Request::is('police_volunteer/list-of-found-person') ? 'active':'' }} " aria-current="page" href="/police_volunteer/index">Home</a>
                         </li>
                         <li class="nav-item   ">
-                           <a class="nav-link {{ Request::is('police_volunteer/report-missing')||Request::is('police_volunteer/report-with-suggestion') ? 'active':'' }}" href="{{ url('/police_volunteer/report-missing') }}">Report Missing Person</a>
+                           <a class="nav-link {{ Request::is('police_volunteer/report-missing-person')||Request::is('police_volunteer/report-missing')||Request::is('police_volunteer/report-with-suggestion') ? 'active':'' }}" href="{{ url('/police_volunteer/report-missing') }}">Report Missing Person</a>
                         </li>
                         <li class="nav-item   ">
-                           <a class="nav-link {{ Request::is('police_volunteer/report-found')||Request::is('police_volunteer/report-with-suggestion-found') ? 'active':'' }}" href="{{ url('/police_volunteer/report-found') }}">Locate Found Person</a>
+                           <a class="nav-link {{ Request::is('police_volunteer/report-found-person')||Request::is('police_volunteer/report-found')||Request::is('police_volunteer/report-with-suggestion-found') ? 'active':'' }}" href="{{ url('/police_volunteer/report-found') }}">Locate Found Person</a>
                         </li>
                         <li class="nav-item   ">
                            <a class="nav-link {{ Request::is('police_volunteer/filter-out') ? 'active':'' }}" href="{{ url('/police_volunteer/filter-out') }}">Filter Out</a>

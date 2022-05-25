@@ -1,4 +1,4 @@
-@extends('layouts.police_volunteer_app')
+@extends('layouts.app')
 
 @section('content')
 
@@ -6,11 +6,12 @@
    @if(session('success'))
      <p class="alert alert-success mx-5"> {{ session('success') }} </p>
    @endif
-            <div class="d-grid gap-2 col-sm-6 mx-auto mb-3">
+            <form class="d-grid gap-2 col-sm-6 mx-auto mb-3">
                     <div class="d-flex">
-                        <p style="letter-spacing:2px" class="text-dark fw-bold  h2 text-center"> Ethiopian Missing Person Announcement and Locating System (eMPALS) </p>
-                  </div>
-</div>
+                        <input class="form-control me-2 rounded" type="search" placeholder="Who you are looking for?"  aria-label="Search">
+                        <button class="btn btn-outline-primary" type="submit">Search</button>
+                    </div>
+            </form>
     <div class="row">
         <div class="col-sm-8">
        

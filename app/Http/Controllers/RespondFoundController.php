@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Found;
+use App\Models\Missing;
+use App\Models\FoundResponses;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class RespondFoundController extends Controller
 {
@@ -35,7 +39,24 @@ class RespondFoundController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator= Validator::make($request->all(),[
+            'relation' => ['required', 'string', 'max:255'],
+            'address' => ['required', 'string', 'max:255'],
+            'cricumstances ' => ['required', 'string'],
+        ]);
+
+
+        $found_response = new FoundResponses();
+        $found_response->police_id=Auth::user()->id;
+        $found_response->found_id =$request->found_id;
+        $found_response->relation = $request->relation;
+        $found_response->address = $request->address;
+        $found_response->circumstances = $request->circumstances;
+      
+        $found_response->save();
+        return redirect('police_volunteer/index')->with('success', 'Thank you for responding! Your Responses has been saved.');
+          
+    
     }
 
     /**

@@ -32,7 +32,7 @@ class MissingController extends Controller
 
     public function index()
     {
-        return view('missing.index');
+        return view('user.report-missing');
     }
 
     public function store(Request $request)
@@ -85,24 +85,4 @@ class MissingController extends Controller
         
     }
 
-    public function show(Missing $missing)
-    {
-        //
-    }
-
-    public function edit(Missing $missing)
-    {
-       
-    }
-
-  
-    public function update(Request $request, Missing $missing)
-    {
-        //
-    }
-
-    public function destroy(Missing $missing)
-    {
-        //
-    }
 }

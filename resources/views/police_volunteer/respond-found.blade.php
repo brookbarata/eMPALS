@@ -15,31 +15,41 @@
  </div> 
 
 
+
  <div class="container mt-1">
-<form class="form-card">   
+
+ <div class="row  row-cols-sm-1 row-cols-md-2 g-3">
+                <div class=" col-md-8">
+                @if(session('danger'))
+                    <p class="alert alert-danger "> {{ session('danger') }} </p>
+                @endif
+</div>
+</div>
+
+<form method="POST" action="{{ route('respond-found.store') }}" enctype="multipart/form-data" class="form-card">   
      @csrf
       <div class="row row-cols-sm-1 mt-1 ">
             <div class="col">
-                <h4 class="fw-bold">Respond us, if you have any Information about <span class="text-danger">{{$profile->fname}}</span></h4>
+                <h4 class="fw-bold">Respond us, if you have any Information about <span class="text-danger">{{$profile->fname}}</span>.</h4>
             </div>
         </div>
             <div class="row row-cols-1 row-cols-sm-2 g-3">
                 <div class="col">
-                <label class="form-control-label fw-bold" >Date ( when did you find <span class="text-danger">{{$profile->fname}}?</span> )</label>
-                <input type="date" class="form-control" required name="date">
+                <label class="form-control-label fw-bold" >What is your Relation with <span class="text-danger">{{$profile->fname}}</span>?</label>
+                <input type="relation" class="form-control" required name="relation" placeholder="Your Relation i.e Aunty, Father... ">
                 </div>
                 <div class="col">
-                <label class="form-control-label fw-bold" >Address ( where did you find <span class="text-danger">{{$profile->fname}}?</span> )</label>
-                <input type="text" class="form-control" required name="city" placeholder="City from were the person found">
+                <label class="form-control-label fw-bold" >Where did you know <span class="text-danger">{{$profile->fname}}</span>?</label>
+                <input type="text" class="form-control" required name="address" placeholder="Address">
                 </div>
                 <div class="col">
-                <label class="form-control-label fw-bold" >Address 2 (optional) </label>
-                <input type="text" class="form-control" required name="sub_city" placeholder="Sub city from were the person found">
+                <label class="form-control-label fw-bold " >Cricumstances about <span class="text-danger">{{$profile->fname}}</span>?</label>
+                <textarea style="height:300px;" type="text" class="form-control" required name="circumstances" placeholder="Messages Here..."></textarea>
                 </div>
                 <div class="col">
-                <label class="form-control-label fw-bold" >Cricumstanses ( how you find <span class="text-danger">{{$profile->fname}}?</span> )</label>
-                <textarea type="text" class="form-control" required name="circumstances" placeholder="Circumstances..."></textarea>
-                </div>
+                <input type="hidden"  name="police_id" hidden value="{{$profile->police_id}}">
+                <input type="hidden"  name="found_id" hidden value="{{$profile->id}}">
+                 </div>
                 </div><div class="row row-cols-1 row-cols-sm-1 mt-1 ">
                     <div class="col">
                 <button type="submit" class="btn btn-dark px-2 py-1">Respond</button>

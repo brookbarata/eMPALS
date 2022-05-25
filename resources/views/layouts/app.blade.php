@@ -24,7 +24,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white fixed-top py-1 shadow-sm mx-3">
             <div class="container">
-                <a class="navbar-brand fw-bold" href="{{ url('/home') }}">
+                <a class="navbar-brand fw-bold" href="{{ url('user/home') }}">
                     {{ config('app.name', 'MPALS') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -36,29 +36,31 @@
 
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link  {{ Request::is('home') ? 'active':'' }} " aria-current="page" href="/home">Home</a>
+                            <a class="nav-link  {{ Request::is('user/home')||Request::is('user/list-of-missing-person')||Request::is('user/list-of-found-person') ? 'active':'' }} " aria-current="page" href="/user/home">Home</a>
                         </li>
                         <li class="nav-item   ">
-                           <a class="nav-link {{ Request::is('report-missing') ? 'active':'' }}" href="{{ url('/report-missing') }}">Report Missing Person</a>
+                           <a class="nav-link {{ Request::is('user/report-missing-person')||Request::is('user/report-missing')||Request::is('user/report-with-suggestion') ? 'active':'' }}" href="{{ url('/user/report-missing') }}">Report Missing Person</a>
                         </li>
                         <li class="nav-item   ">
-                           <a class="nav-link {{ Request::is('report-found') ? 'active':'' }}" href="{{ url('/report-found') }}">Locate Found Person</a>
+                           <a class="nav-link {{ Request::is('user/report-found-person')||Request::is('user/report-found')||Request::is('user/report-with-suggestion-found') ? 'active':'' }}" href="{{ url('/user/report-found') }}">Locate Found Person</a>
                         </li>
                         <li class="nav-item   ">
-                           <a class="nav-link {{ Request::is('filter-out') ? 'active':'' }}" href="/filter-out">Filter Out</a>
+                           <a class="nav-link {{ Request::is('user/filter-out') ? 'active':'' }}" href="{{ url('/user/filter-out') }}">Filter Out</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/statistics">Statistics</a>
+                            <a class="nav-link {{ Request::is('user/statistics') ? 'active':'' }}" href="{{ url('/user/statistics') }}">Statistics</a>
                         </li>
                         <li class="nav-item dropdown  ">
-                            <a class="nav-link dropdown-toggle {{ Request::is('contact') ? 'active':'' }}" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">More</a>
+                            <a class="nav-link dropdown-toggle {{ Request::is('user/help')|| Request::is('user/contact-us')|| Request::is('user/my-reports') ? 'active':'' }}" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">More</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="#">Help</a></li>
-                            <li><a class="dropdown-item" href="#">Contact Us</a></li>
-                            <li><a class="dropdown-item" href="#">My Reports</a></li>
+                            <li><a class="dropdown-item" href="{{ url('/user/help') }}">Help</a></li>
+                            <li><a class="dropdown-item" href="{{ url('/user/contact-us') }}">Contact Us</a></li>
+                            <li><a class="dropdown-item" href="{{ url('/user/my-reports') }}">My Reports</a></li>
                         </ul>
                         </li>
                     </ul>
+
+        
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
@@ -109,7 +111,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-4 mt-5">
             @yield('content')
         </main>
     </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Found;
+use App\Models\Missing;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Auth;
@@ -39,6 +40,7 @@ class PoliceFoundPersonController extends Controller
                  'street_name' => ['required', 'string', 'max:255'],
                  'house_no' => ['required', 'string', 'max:255'],
                  'special_description' => ['required', 'string', 'max:255'],
+                 'photo' => 'required',
              ]);
      
 
@@ -76,16 +78,21 @@ class PoliceFoundPersonController extends Controller
                 \Session::put('photo','/storage/'.$path);   
                 
                
-                  $data['results']= Found::where('fname','LIKE',"%{$request->fname}%")
-                                                 ->orWhere('mname','LIKE',"%{$request->mname}%")
-                                                 ->orWhere('lname','LIKE',"%{$request->lname}%")
-                                                 ->orWhere('age','LIKE',"%{$request->age}%")
-                                                 ->orWhere('city','LIKE',"%{$request->city}%")
-                                                 ->orWhere('sub_city','LIKE',"%{$request->sub_city}%")
-                                                 ->orWhere('special_description','LIKE',"%{$request->special_description}%")
-                                                 ->paginate(2);
+                  $data['results']= Missing::where('fname','LIKE',"%{$request->fname}%")
+                                            ->where('mname','LIKE',"%{$request->mname}%")
+                                            ->where('lname','LIKE',"%{$request->lname}%")
+                                            ->where('age','LIKE',"%{$request->age}%")
+                                            ->orWhere('city','LIKE',"%{$request->city}%")
+                                            ->orWhere('sub_city','LIKE',"%{$request->sub_city}%")
+                                            ->orWhere('special_description','LIKE',"%{$request->special_description}%")
+                                            ->get();
  
-                 return redirect('police_volunteer/report-with-suggestion-found')->with('success', 'Reports Frist Part added, go ahead.');
-          }
+                  if($data['results']->isNotEmpty()){
+                    return view('police_volunteer/suggestions/suggestions-found', $data)->with('success', 'Reports Frist Part added, go ahead.');
+                 }
+                else{
+                    return view('police_volunteer/report-with-suggestion-found')->with('error', 'Noops, You does not have any suggestions!');
+                }
      }
+    }
 }

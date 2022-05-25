@@ -1,4 +1,4 @@
-@extends('layouts.police_volunteer_app')
+@extends('layouts.app')
 
 @section('content')
 
@@ -7,7 +7,7 @@
            <div class="d-grid col-sm-3 mx-2">
            <nav aria-label="breadcrumb" class="bg-light">
                     <ol class="breadcrumb my-1 px-0">
-                        <li class="breadcrumb-item"><a href="/police_volunteer/index">Home</a></li>
+                        <li class="breadcrumb-item"><a href="/user/home">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">My Reports</li>
                     </ol>
                     </nav>
@@ -50,7 +50,7 @@
         <td>
           <ul class="list-inline sm-12 m-0">
                   <li class="list-inline-item">
-                     <a href="/police_volunteer/report-missing"> <button class="btn btn-primary btn-sm rounded-1" type="button" data-toggle="tooltip" data-placement="top" title="Add"><i class="fa fa-table"></i></button></a>
+                     <a href="/user/report-missing"> <button class="btn btn-primary btn-sm rounded-1" type="button" data-toggle="tooltip" data-placement="top" title="Add"><i class="fa fa-table"></i></button></a>
                   </li>
                   <li class="list-inline-item">
                   <a href="{{ route('list-of-missing-person.edit', $item)}}"> <button class="btn btn-success btn-sm rounded-1" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></button></a>
@@ -111,7 +111,7 @@
         <td>
           <ul class="list-inline m-0">
                   <li class="list-inline-item">
-                     <a href="/police_volunteer/report-found"> <button class="btn btn-primary btn-sm rounded-1" type="button" data-toggle="tooltip" data-placement="top" title="Add"><i class="fa fa-table"></i></button></a>
+                     <a href="/user/report-found"> <button class="btn btn-primary btn-sm rounded-1" type="button" data-toggle="tooltip" data-placement="top" title="Add"><i class="fa fa-table"></i></button></a>
                   </li>
                   <li class="list-inline-item">
                      <a href="{{ route('list-of-found-person.edit', $item)}}"> <button class="btn btn-success btn-sm rounded-1" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></button></a>

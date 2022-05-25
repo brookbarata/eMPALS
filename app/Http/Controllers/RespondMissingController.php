@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Missing;
+use App\Models\Found;
+use App\Models\MissingResponses;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 
 class RespondMissingController extends Controller
@@ -36,8 +40,24 @@ class RespondMissingController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $validator= Validator::make($request->all(),[
+            'relation' => ['required', 'string', 'max:255'],
+            'address' => ['required', 'string', 'max:255'],
+            'cricumstances ' => ['required', 'string'],
+        ]);
+
+
+        $missing_response = new MissingResponses();
+        $missing_response->police_id=Auth::user()->id;
+        $missing_response->missing_id =$request->missing_id;
+        $missing_response->relation = $request->relation;
+        $missing_response->address = $request->address;
+        $missing_response->circumstances = $request->circumstances;
+      
+        $missing_response->save();
+        return redirect('police_volunteer/index')->with('success', 'Thank you for responding! Your Responses has been saved.');
+          
+      }    
 
     /**
      * Display the specified resource.

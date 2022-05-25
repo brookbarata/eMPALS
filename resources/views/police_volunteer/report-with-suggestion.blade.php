@@ -96,9 +96,12 @@
 
 
    <div class ="col-md-4">
-                        <h5 class="text-center bg-dark rounded p-2 text-white">Your Suggestions Here...</h5>
+                        <h5 class="text-center bg-dark rounded p-2 text-white">Your data results with...</h5>
                         <div  class=" bg-light rounded card-body">
             
+                    @if(session('error'))
+                        <p class="alert alert-info"> {{ session('errror') }} </p>
+                    @endif
                 </div>
             </div>
 </div>

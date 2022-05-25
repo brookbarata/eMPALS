@@ -4,9 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class HelpController extends Controller
+class SuggestionsMissingController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth');
@@ -14,10 +13,10 @@ class HelpController extends Controller
 
     public function index()
     {
-        return view('police_volunteer.help');
+        return view('police_volunteer.suggestions-missing');
     }
     public function create()
     {
-        return view('user.help');
+        return view('user.suggestions-missing');
     }
 }

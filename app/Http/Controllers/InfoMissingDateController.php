@@ -82,9 +82,7 @@ class InfoMissingDateController extends Controller
         $missing->special_description =\Session::get('special_description');
         $missing->photo =\Session::get('photo');
 
-        $missing->save();
-
-                   
+        $missing->save();         
 
             $missing_date = new InfoMissingDate();
             $missing_date->missing_id =\Session::get('missing_id');

@@ -15,15 +15,15 @@
             </div>
             <form class="d-grid gap-2 col-sm-3 mx-auto">
                     <div class="d-flex">
-                        <input class="form-control me-2 rounded" type="search" placeholder="Search Found Person Here..."  aria-label="Search">
-                        <button class="btn btn-outline-primary" type="submit">Search</button>
-                    </div>
+                    <input class="form-control me-2 rounded" type="text" name="search" value="{{$search}}" placeholder="Search Found Person Here..."  aria-label="Search">
+                    <button class="btn btn-outline-primary">Search</button>
+                     </div>
             </form>
     </div>
         <div class="col-sm-9 mx-auto">
         <div class="card">
             <div style="letter-spacing:0.1em;" class="fw-bold card-header h3 p-0 alert alert-light rounded my-1 text-center ">
-                    List of Found Person Reports
+                    List of <span class="fw-bold text-primary">Found</span>  Person Reports
             </div>
             <p class="text-center alert alert-warning py-0 px-1 mx-1">Please respond us if you know these found persons, we want to meet them with their parents.</p>
        
@@ -41,21 +41,21 @@
                             <div class='md-4 col end'>
                                   <img src="{{ asset($item->photo) }}" height="170" width="170" class="img " />
                             <br>
-                            <h5 class ="fw-bold text-danger">{{$item->fname}}  {{$item->mname}}</h5>
-                            <h6>{{$item->fname}}  {{$item->mname}}</h6>
+                            <h5 class ="fw-bold text-success">{{$item->fname}}  {{$item->mname}} {{$item->lname}}</h5>
+                            <h6>{{$item->age}} yrs Old</h6>
                             <div class="btn-group">
-                            <a href="{{ route('list-of-found-person.show', $item)  }}"><button class="py-0  btn btn-sm btn-outline-secondary">View</button></a>
-                            <a href="{{ route('respond-found.show', $item)  }}"><button class="py-0  btn btn-sm btn-outline-secondary">Respond</button></a>
+                            <a href="{{ route('list-of-found-person.show', $item)  }}"><button class="py-0 px-2 btn btn-sm btn-danger">View</button></a>
+                            <a href="{{ route('respond-found.show', $item)  }}"><button class="mx-1 py-0 px-2 btn btn-sm btn-outline-secondary">Respond</button></a>
                             </div>
                         @else
-                            <div class='md-4 col' >
+                            <div class='md-4 m-2 col' >
                                   <img src="{{ asset($item->photo) }}" height="170" width="170" class="img " />
                             <br>
-                            <h5 class ="fw-bold text-danger">{{$item->fname}}  {{$item->mname}}</h5>
-                            <h6>{{$item->fname}}  {{$item->mname}}</h6>
+                            <h5 class ="fw-bold text-success">{{$item->fname}}  {{$item->mname}} {{$item->lname}}</h5>
+                            <h6>{{$item->age}} yrs Old</h6>
                             <div class="btn-group mt-0">
-                            <a href="{{ route('list-of-found-person.show', $item)  }}"><button class="py-0 btn btn-sm btn-outline-secondary">View</button></a>
-                            <a href="{{ route('respond-found.show', $item)  }}"><button class="py-0 btn btn-sm btn-outline-secondary">Respond</button></a>
+                            <a href="{{ route('list-of-found-person.show', $item)  }}"><button class="py-0 px-2 btn btn-sm btn-danger">View</button></a>
+                            <a href="{{ route('respond-found.show', $item)  }}"><button class="mx-1 py-0 px-2 btn btn-sm btn-outline-secondary">Respond</button></a>
                             </div>
                        @endif
                             @if($i % 4 == 0)

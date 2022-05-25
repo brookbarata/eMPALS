@@ -2,23 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\MeetPerson;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cache;
 
 class MeetPersonController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
+    
     public function manage_meet_persons(){
         return view('admin.manage_meet_persons');
      }
 
-
+     
     public function index()
     {
         //
@@ -48,10 +41,10 @@ class MeetPersonController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\MeetPerson  $meetPerson
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(MeetPerson $meetPerson)
+    public function show($id)
     {
         //
     }
@@ -59,10 +52,10 @@ class MeetPersonController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\MeetPerson  $meetPerson
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(MeetPerson $meetPerson)
+    public function edit($id)
     {
         //
     }
@@ -71,10 +64,10 @@ class MeetPersonController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\MeetPerson  $meetPerson
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, MeetPerson $meetPerson)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -82,10 +75,10 @@ class MeetPersonController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\MeetPerson  $meetPerson
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(MeetPerson $meetPerson)
+    public function destroy($id)
     {
         //
     }

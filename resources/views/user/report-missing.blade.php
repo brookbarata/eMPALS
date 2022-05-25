@@ -2,15 +2,18 @@
 
 @section('content')
     
-<div class="container mt-5">  
+<div class="container">  
 <h3 class="text-center fw-bold">Report Missing Person</h3>
-  
+
     <div class="row  row-cols-sm-1 row-cols-md-2 g-3">
                 <div class=" col-md-8">
+                @if(session('danger'))
+                    <p class="alert alert-danger "> {{ session('danger') }} </p>
+                @endif
                     <div class="alert alert-warning p-2" role="alert">
-                   Please insert some valid inputs, Unless it will be declined by the Admin. Thank you!
+                    Please insert some valid inputs, Unless your report will be declined by the Admin. Thank you!
                     </div>
-      <form method="POST" action="{{ route('report-missing.store') }}">
+      <form method="POST" action="{{ route('police_volunteer_missing.store') }}" enctype="multipart/form-data">
          @csrf
         <div class="row row-cols-sm-1 mt-1 ">
             <div class="col">
@@ -66,7 +69,7 @@
                 </div>
             <div class="col">
                 <select class="form-select" name="region" >
-                    <option value="0" selected>Select Region</option>
+                    <option  selected>Select Region</option>
                     <option value="South West">South West Peoples Regional State</option>
                     <option value="SNNPR">South Nation Nationalities Peoples Regional State</option>
                     <option value="Sidama">Sidama Regional State</option>
@@ -96,21 +99,21 @@
                 <input type="text" class="form-control" required name="street_name" placeholder="Street" >
                 </div>
             <div class="col">
-                <input type="text" class="form-control" required name="house_no" placeholder="House Number">
+                <input type="number" class="form-control" required name="house_no" placeholder="House Number">
               </div>
         </div>
         <div class="row row-cols-1 row-cols-sm-2  mt-1 g-3">
             <div class="col">
                 <textarea type="text" class="form-control" required name="special_description" placeholder="Special Markings -such as tattoos, birthmarks, scars, etc." ></textarea>
                 </div>
-            <div class="col">
-                <input type="file" class="form-control" accept=".jpg,.png,.gif,.webp" name="photo" placeholder="Most recent picture of Missing Person">
+            <div class="col"> 
+                <input type="file" class="form-control" accept=".jpg,.png,.gif,.webp" name="photo"id="photo" >
                 <label class="alert alert-warning p-0 px-4" for="file">!!! Upload here the most recent picture of missing person.</label>  
             </div>
         </div>
         <div class="row row-cols-1 row-cols-sm-1 mt-1 ">
             <div class="col">
-            <button type="submit" class="btn btn-dark">Save and Goto Next Page</button>
+            <button type="submit" value="Save" class="btn btn-dark">Save and Goto Next Page</button>
         </div>
         </div>
     </form>

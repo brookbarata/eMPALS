@@ -11,9 +11,23 @@ use Illuminate\Support\Facades\Auth;
 class FoundPersonProfileController extends Controller
 {
     
-    public function index(){
-        $found = Found::paginate(8);
-        return view('police_volunteer.list-of-found-person')->with('found', $found);
+    public function index(Request $request){
+
+        $data["search"]=$request->get('search');
+        $data["found"] = Found::where('confirmed','=',"1")
+                                ->where('fname', 'like', '%'.$data['search'].'%')          
+                                ->orWhere('mname', 'like', '%'.$data['search'].'%')                
+                                ->orWhere('lname', 'like', '%'.$data['search'].'%')    
+                                ->orWhere('city', 'like', '%'.$data['search'].'%')                
+                                ->orWhere('sub_city', 'like', '%'.$data['search'].'%')  
+                                ->orWhere('region', 'like', '%'.$data['search'].'%')                              
+                                ->orWhere('nick_name', 'like', '%'.$data['search'].'%')  
+                                ->orWhere('brith_place', 'like', '%'.$data['search'].'%') 
+                                ->orWhere('age', '=', $data['search']) 
+                                ->orWhere('street_name', 'like', '%'.$data['search'].'%') 
+                                ->orWhere('special_description', 'like', '%'.$data['search'].'%') 
+                                ->paginate(8);
+        return view('police_volunteer.list-of-found-person', $data);
      }
 
 

@@ -30,7 +30,7 @@ class FoundController extends Controller
 
     public function index()
     {
-        return view('found.index');
+        return view('user.report-found');
     }
 
     /**

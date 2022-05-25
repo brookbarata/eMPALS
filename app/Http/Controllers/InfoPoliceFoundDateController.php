@@ -26,7 +26,7 @@ class InfoPoliceFoundDateController extends Controller
       
        $validator= Validator::make($request->all(),[
             
-           'date' => 'required|date|before:tomorrow',
+           'date' => 'required|date|before:today',
             'city' => ['required', 'string', 'max:255'],
             'sub_city' => ['required', 'string', 'max:255'],
             'skin_color' => ['required', 'string'],
