@@ -5,13 +5,18 @@ use App\Http\Controllers\MissingPersonProfileController;
 use App\Http\Controllers\FoundPersonProfileController;
 use App\Http\Controllers\InfoMissingDateController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ShareSocialController; 
 use App\Http\Controllers\MyReportsController; 
 use App\Http\Controllers\FilterOutController; 
 use App\Http\Controllers\MailController; 
+use App\Http\Controllers\MailSecondController; 
 use App\Http\Controllers\RespondMissingController;
 use App\Http\Controllers\RespondFoundController;
 use App\Http\Controllers\MeetPersonController;
+use App\Http\Controllers\ManageMissingPersonController;
+use App\Http\Controllers\ManageFoundPersonController;
+use App\Http\Controllers\PoliceVolunteerController; 
+
+
 
 
 
@@ -23,7 +28,6 @@ use App\Http\Controllers\MeetPersonController;
         Route::get('/report-found',[App\Http\Controllers\FoundController::class, 'index'])->name('user.report-found');
         Route::get('/filter-out',[FilterOutController::class, 'create'])->name('user.filter-out');
         Route::get('/statistics', [App\Http\Controllers\StatisticsController::class, 'create'])->name('user.statistics');
-        Route::get('/help', [App\Http\Controllers\HelpController::class, 'create'])->name('user.help');
         Route::get('/contact-us', [App\Http\Controllers\ContactUsController::class, 'create'])->name('user.contact-us');
         Route::get('/my-reports', [App\Http\Controllers\MyReportsController::class, 'create'])->name('user.my-reports');
      
@@ -46,13 +50,10 @@ use App\Http\Controllers\MeetPersonController;
             Route::resource('list-of-found-person', FoundPersonProfileController::class);
             Route::resource('respond-missing',RespondMissingController::class);
             Route::resource('respond-found',RespondFoundController::class);
-            Route::resource('meet-person',MeetPersonController::class);
             Route::resource('my-reports',MyReportsController::class);
             Route::resource('filter-out',FilterOutController::class);
 
 
-            Route::get('/send-mail', [App\Http\Controllers\MailController::class, 'sendMail']);
-            Route::get('/help', [App\Http\Controllers\HelpController::class, 'index'])->name('police_volunteer.help');
             Route::get('/contact-us', [App\Http\Controllers\ContactUsController::class, 'index'])->name('police_volunteer.contact-us');
             Route::get('/statistics', [App\Http\Controllers\StatisticsController::class, 'index'])->name('police_volunteer.statistics');
         
@@ -81,15 +82,25 @@ use App\Http\Controllers\MeetPersonController;
         });
         
         Route::group(['middleware' => 'admin.auth'], function(){
+
+            Route::resource('manage-missing-person', ManageMissingPersonController::class);
+            Route::resource('manage-found-person', ManageFoundPersonController::class);
+            Route::resource('send-mail', MailController::class);
+            Route::resource('send-missing-mail', MailSecondController::class);
+            Route::resource('manage-police-volunteer', PoliceVolunteerController::class);
+            Route::resource('manage-user', HomeController::class);
+            Route::resource('respond-missing',RespondMissingController::class);
+            Route::resource('respond-found',RespondFoundController::class);
+
+           
+            Route::get('/manage-found-responses',[RespondFoundController::class, 'manageFoundResponses'])->name('admin.manageFoundResponses');
+            Route::get('/manage-missing-responses',[RespondMissingController::class, 'manageMissingResponses'])->name('admin.manageMissingResponses');
             Route::post('/add-police-volunteer',[App\Http\Controllers\PoliceVolunteerController::class, 'store'])->name('police_volunteer.store');
-            Route::get('/add-police-volunteer',[App\Http\Controllers\PoliceVolunteerController::class, 'add_police_volunteer'])->name('admin.add_police_volunteer');
-            Route::get('/manage-mp-reports',[App\Http\Controllers\MissingController::class, 'manage_mp_reports'])->name('admin.manage_mp_reports');
-            Route::get('/manage-fp-reports',[App\Http\Controllers\FoundController::class, 'manage_fp_reports'])->name('admin.manage_fp_reports');
-            Route::get('/manage-meet-persons',[App\Http\Controllers\MeetPersonController::class, 'manage_meet_persons'])->name('admin.manage_meet_persons');
+            Route::get('/add-police-volunteer',[App\Http\Controllers\PoliceVolunteerController::class, 'addPoliceVolunteer'])->name('admin.add_police_volunteer');
+            Route::get('/manage-mp-reports',[App\Http\Controllers\ManageMissingPersonController::class, 'index'])->name('admin.manage_mp_reports');
+            Route::get('/manage-fp-reports',[App\Http\Controllers\ManageFoundPersonController::class, 'index'])->name('admin.manage_fp_reports');
             Route::get('/manage-users',[App\Http\Controllers\HomeController::class, 'manage_users'])->name('admin.manage_users');
-            Route::get('/manage-police-volunteer',[App\Http\Controllers\PoliceVolunteerController::class, 'manage_police_volunteer'])->name('admin.manage_police_volunteer');
-            Route::get('/validate-mp-pending',[App\Http\Controllers\MissingController::class, 'validate_mp_pending'])->name('admin.validate_mp_pending');
-            Route::get('/validate-fp-pending',[App\Http\Controllers\FoundController::class, 'validate_fp_pending'])->name('admin.validate_fp_pending');
+            Route::get('/manage-police-volunteer',[App\Http\Controllers\PoliceVolunteerController::class, 'managePoliceVolunteer'])->name('admin.manage_police_volunteer');
             Route::get('/index',[App\Http\Controllers\AdminDashboardController::class, 'index'])->name('admin.index');
             Route::get('/dashboard',[App\Http\Controllers\AdminDashboardController::class, 'dashboard'])->name('admin.dashboard');
             Route::get('/logout', [App\Http\Controllers\AdminController::class, 'logout'])->name('admin.logout');

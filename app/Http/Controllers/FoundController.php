@@ -17,15 +17,6 @@ class FoundController extends Controller
     {
         $this->middleware('auth');
     }
-    
-
-     public function manage_fp_reports(){
-        return view('admin.manage_fp_reports');
-     }
-
-     public function validate_fp_pending(){
-        return view('admin.validate_fp_pending');
-     }
 
 
     public function index()

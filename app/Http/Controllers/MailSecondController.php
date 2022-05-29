@@ -2,35 +2,37 @@
 
 namespace App\Http\Controllers;
 
-
-use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Mail\Mailer;
+use Mail;
+use App\Models\PoliceVolunteer;
+use App\Models\Missing;
+use App\Models\Found;
 
-class HomeController extends Controller
+
+ 
+use App\Mail\NotifyViaMail;
+ 
+ 
+
+
+class MailSecondController extends Controller
 {
-    
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-
-    public function manage_users(){
-        $data['users']= User::orderByDesc('created_at')
-                             ->paginate(6);
-        
-    
-        return view('admin.manage_users', $data);
-    }
-
-
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        return view('user/home');
+        //
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
         //
@@ -78,7 +80,26 @@ class HomeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $mp=Missing::find($id);
+
+        $mailData = [
+           "fname" =>$mp->fname,
+           "mname" =>$mp->mname,
+           "person"=>"Missing",
+           "link" => "http://127.0.0.1:8080/police_volunteer/list-of-missing-person/$id"
+       ];
+       $police_volunteers = PoliceVolunteer::where('region','=', $mp->region)
+                              ->pluck('email')
+                              ->toArray();
+       foreach ($police_volunteers as $recipient) {
+          Mail::to($recipient)->send(new NotifyViaMail($mailData));             
+          }
+
+        $mp->notified = 1;
+        $mp->save();
+
+        return redirect('admin/dashboard')->with('success', 'Nearby Police Officers and Volunteers Notified!');
+  
     }
 
     /**
@@ -89,8 +110,6 @@ class HomeController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::find($id);
-        $user->delete();
-       return redirect('admin/dashboard')->with('success', 'Report Deleted Succesfully.');
+        //
     }
 }

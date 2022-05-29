@@ -26,6 +26,7 @@ class MissingPersonProfileController extends Controller
                                 ->orWhere('age', '=', $data['search']) 
                                 ->orWhere('street_name', 'like', '%'.$data['search'].'%') 
                                 ->orWhere('special_description', 'like', '%'.$data['search'].'%') 
+                                ->orderByDesc('created_at')
                                 ->paginate(8);
         return view('police_volunteer.list-of-missing-person',$data);
      }

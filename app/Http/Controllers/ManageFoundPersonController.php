@@ -2,35 +2,31 @@
 
 namespace App\Http\Controllers;
 
-
-use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Auth;
+use App\Models\Found;
 
-class HomeController extends Controller
+class ManageFoundPersonController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+        public function index()
+        {
+            $data['found_report']= Found::orderByDesc('created_at')
+                                ->paginate(8);
+
+            return view('admin.manage_fp_reports', $data);
+        }
     
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
-
-    public function manage_users(){
-        $data['users']= User::orderByDesc('created_at')
-                             ->paginate(6);
-        
-    
-        return view('admin.manage_users', $data);
-    }
-
-
-    public function index()
-    {
-        return view('user/home');
-    }
-
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
         //
@@ -78,7 +74,12 @@ class HomeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $found_report=Found::find($id);
+        $found_report->confirmed = 1;
+        $found_report->save();
+        
+        return redirect('admin/dashboard')->with('success', 'Report Validated Succesfully.');
+
     }
 
     /**
@@ -89,8 +90,9 @@ class HomeController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::find($id);
-        $user->delete();
+        $found_report = Found::find($id);
+        $found_report->delete();
        return redirect('admin/dashboard')->with('success', 'Report Deleted Succesfully.');
+    
     }
 }

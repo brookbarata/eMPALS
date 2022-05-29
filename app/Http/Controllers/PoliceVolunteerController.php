@@ -9,6 +9,7 @@ use App\Models\PoliceVolunteer;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 
+
 use Validator, Auth;
 
 class PoliceVolunteerController extends Controller
@@ -34,14 +35,17 @@ class PoliceVolunteerController extends Controller
         return redirect()->route('police_volunteer.login');
     }
 
-    public function add_police_volunteer(){
+    public function addPoliceVolunteer(){
     
         return view('admin.add_police_volunteer');
     }
 
-    public function manage_police_volunteer(){
+    public function managePoliceVolunteer(){
+        $data['users']= PoliceVolunteer::orderByDesc('created_at')
+                                         ->paginate(6);
+       
     
-        return view('admin.manage_police_volunteer');
+        return view('admin.manage_police_volunteer',$data);
     }
 
     public function index(){
@@ -73,6 +77,29 @@ class PoliceVolunteerController extends Controller
         ]);
 
             return redirect('admin/dashboard')->with('success', 'New Police Volunteer added Succesfully');
-        
+           
     }
+ 
+    public function show($id)
+    {
+        //
     }
+
+    public function edit($id)
+    {
+        //
+    }
+
+    public function update(Request $request, $id)
+    {
+          }
+
+
+    public function destroy($id)
+    {
+        $user = PoliceVolunteer::find($id);
+        $user->delete();
+       return redirect('admin/dashboard')->with('success', 'Report Deleted Succesfully.');
+   
+    }
+}

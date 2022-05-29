@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="{{ asset( 'backend/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset( 'backend/dist/css/adminlte.min.css') }}">
+
 </head>
 <body class="hold-transition  sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
@@ -27,46 +28,15 @@
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="/" class="nav-link">Home</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
-      </li>
+ <p class="fw-bold text-center text-light mt-1">eMPALS Admin Dashboard</p>
     </ul>
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-      <!-- Navbar Search -->
-      <li class="nav-item">
-        <a class="nav-link" data-widget="navbar-search" href="#" role="button">
-          <i class="fas fa-search"></i>
-        </a>
-        <div class="navbar-search-block">
-          <form class="form-inline">
-            <div class="input-group input-group-sm">
-              <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-              <div class="input-group-append">
-                <button class="btn btn-navbar" type="submit">
-                  <i class="fas fa-search"></i>
-                </button>
-                <button class="btn btn-navbar" type="button" data-widget="navbar-search">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </li>
 
       <li class="nav-item">
         <a class="nav-link" data-widget="fullscreen" href="#" role="button">
           <i class="fas fa-expand-arrows-alt"></i>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-          <i class="fas fa-th-large"></i>
         </a>
       </li>
       @if(Auth::guard('admin')->check())
@@ -89,7 +59,7 @@
 
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <a href="/admin/dashboard" class="brand-link">
-      <span class="brand-text font-weight-bold">eMPALS Dashboard</span>
+      <span class="brand-text font-weight-bold">Dashboard</span>
     </a>
     <div class="sidebar">
         <!-- Sidebar Menu -->
@@ -97,7 +67,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
+          <li class="nav-item">
             <a href="/admin" class="nav-link {{ Request::is('admin')||Request::is('admin/dashboard')? 'active':'' }}">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
@@ -105,98 +75,76 @@
               </p>
             </a>
           </li>
-  
-          <li class="nav-item">
-          <a href="#" class="nav-link {{ Request::is('admin/manage-mp-reports')||Request::is('admin/validate-mp-pending')? 'active':'' }}">
-              <i class="nav-icon fas fa-copy"></i>
-              <p>
-           Missing Person
-              <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/admin/manage-mp-reports" class="nav-link {{ Request::is('admin/manage-mp-reports')? 'active':'' }}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Manage Reports</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/admin/validate-mp-pending" class="nav-link {{ Request::is('admin/validate-mp-pending')? 'active':'' }}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Validate Pending</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-
-
-          <li class="nav-item ">
-            <a href="#" class="nav-link {{ Request::is('admin/manage-fp-reports')||Request::is('admin/validate-fp-pending')? 'active':'' }}">
-              <i class="nav-icon fas fa-copy"></i>
-              <p>
-           Found Person
-              <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/admin/manage-fp-reports" class="nav-link {{ Request::is('admin/manage-fp-reports')? 'active':'' }}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Manage Reports</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/admin/validate-fp-pending" class="nav-link {{ Request::is('admin/validate-fp-pending')? 'active':'' }}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Validate Pending</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-
-          <li class="nav-item ">
-            <a href="/admin/manage-meet-persons" class="nav-link {{ Request::is('admin/manage-meet-persons')? 'active':'' }}">
-              <i class="nav-icon fas fa-tree"></i>
-              <p>
-           Meet Person
-              </p>
-            </a>
-          </li>
 
           <li class="nav-item">
             <a href="/admin/manage-users" class="nav-link {{ Request::is('admin/manage-users')? 'active':'' }}">
-            <i class="nav-icon fa fa-users" aria-hidden="true"></i>
+            <i class="fas fa-user-cog" aria-hidden="true"></i>
               <p>
-               User Management
+              &nbsp;  Manage Users
               </p>
             </a>
           </li>
 
           <li class="nav-item">
             <a href="#" class="nav-link  {{ Request::is('admin/add-police-volunteer')||Request::is('admin/manage-police-volunteer')? 'active':'' }}">
-              <i class="nav-icon fas fa-copy"></i>
+              <i class="fas fa-user-tie"></i>
               <p>
-              Police-Volunteer
+              &nbsp;&nbsp; &nbsp; Police-Volunteer
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="/admin/add-police-volunteer" class="nav-link {{ Request::is('admin/add-police-volunteer')? 'active':'' }}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add Police Volunteer</p>
+                  <i class="fas fa-user-plus"></i>
+                  <p> &nbsp; &nbsp; Add Police Volunteer</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="/admin/manage-police-volunteer" class="nav-link {{ Request::is('admin/manage-police-volunteer')? 'active':'' }}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Manage Police Volunteer</p>
+                  <i class="fas fa-user-cog"></i>
+                  <p> &nbsp;&nbsp; Manage Police/Volunteer</p>
                 </a>
               </li>
             </ul>
           </li>
 
+
+          <li class="nav-item ">
+            <a href="/admin/manage-found-responses" class="nav-link {{ Request::is('admin/manage-found-responses')? 'active':'' }}">
+              <i class="fas fa-id-card"></i>
+              <p>
+              &nbsp;&nbsp;&nbsp;  Found Responses
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item ">
+            <a href="/admin/manage-missing-responses" class="nav-link {{ Request::is('admin/manage-missing-responses')? 'active':'' }}">
+              <i class="far fa-id-card"></i>
+              <p>
+              &nbsp;&nbsp;&nbsp;   Missing Responses
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item ">
+            <a href="/admin/manage-fp-reports" class="nav-link {{ Request::is('admin/manage-fp-reports')? 'active':'' }}">
+              <i class="fas fa-street-view"></i>
+              <p>
+              &nbsp;&nbsp;&nbsp; Manage Found Reports
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+          <a href="/admin/manage-mp-reports" class="nav-link {{ Request::is('admin/manage-mp-reports')? 'active':'' }}">
+              <i class="fas fa-user-ninja"></i>
+              <p>
+              &nbsp;&nbsp;&nbsp; Manage Missing Reports
+              </p>
+            </a>
+          </li>
      
         </ul>
       </nav>
@@ -204,11 +152,12 @@
     </div>
     <!-- /.sidebar -->
   </aside>
+<div class="m-0">
 
     @yield('content')
 
   @include('layouts.footer');
-
+</div>
   </div>
 <!-- ./wrapper -->
 

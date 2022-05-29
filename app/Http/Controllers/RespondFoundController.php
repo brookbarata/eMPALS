@@ -11,11 +11,16 @@ use Illuminate\Support\Facades\Validator;
 
 class RespondFoundController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
+
+    public function manageFoundResponses(){
+
+        $data['responses']= FoundResponses::orderByDesc('created_at')
+                                           ->paginate(6);
+
+        return view('admin.manage-found-responses', $data);
+    }
+
     public function index()
     {
         return view('police_volunteer.respond-found');
@@ -103,6 +108,9 @@ class RespondFoundController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = FoundResponses::find($id);
+        $user->delete();
+       return redirect('admin/dashboard')->with('success', 'Report Deleted Succesfully.');
+   
     }
 }

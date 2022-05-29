@@ -11,14 +11,15 @@ class NotifyViaMail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $mailData;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($mailData)
     {
-        //
+        $this->mailData = $mailData;
     }
 
     /**
@@ -28,6 +29,6 @@ class NotifyViaMail extends Mailable
      */
     public function build()
     {
-        return $this->view('send-mail');
+        return $this->subject('eMPALS')->view('admin.send-mail');
     }
 }

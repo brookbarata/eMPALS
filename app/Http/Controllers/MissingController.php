@@ -21,15 +21,6 @@ class MissingController extends Controller
     }
     
 
-    public function manage_mp_reports(){
-        return view('admin.manage_mp_reports');
-     }
-
-     public function validate_mp_pending(){
-        return view('admin.validate_mp_pending');
-     }
-
-
     public function index()
     {
         return view('user.report-missing');

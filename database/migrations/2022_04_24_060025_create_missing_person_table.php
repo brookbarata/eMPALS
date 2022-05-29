@@ -36,6 +36,7 @@ return new class extends Migration
             $table->string('special_description');
             $table->string('photo',300)->nullable();
             $table->boolean('confirmed')->nullable()->default(false);
+            $table->boolean('notified')->nullable()->default(false);
             $table->timestamps();
         });
     }

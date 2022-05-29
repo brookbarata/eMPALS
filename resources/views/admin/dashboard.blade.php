@@ -9,7 +9,6 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Dashboard</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -19,117 +18,34 @@
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
-    <!-- /.content-header -->
 
-    <!-- Main content -->
+    
     <section class="content">
       <div class="container-fluid">
         <!-- Info boxes -->
         @if(session('success'))
      <p class="alert alert-success"> {{ session('success') }} </p>
        @endif
-            <!-- TABLE: LATEST ORDERS -->
-            <div class="card">
-              <div class="card-header border-transparent">
-                <h3 class="card-title">Validate User Reports</h3>
+       <div class="row">
+       <p style="letter-spacing:2px" class="text-dark fw-bold  h2 text-center"> Ethiopian Missing Person Announcement and Locating System (<span class="text-primary" >eMPALS</span>) Encompasses </p>
+        <div class="col-sm-3 mt-5 card"><a href="/admin/manage-users">
+ <p class="text-center"> <span class="display-1  fw-bold text-success" > {{$user}}</span><span class="display-4  fw-bold text-danger" > +</span></p>
+ <h3 class ="text-center text-info fw-bold">Registered Users</h3>
+ </a>  </div> 
+       <div class="col-sm-3 mt-5 card"> <a href="/admin/manage-police-volunteer">
+        <p class="text-center"> <span class="display-1  fw-bold text-success" > {{$police}}</span><span class="display-4  fw-bold text-danger" > +</span></p>
+ <h3 class ="text-center fw-bold">Police/Volunteers</h3>        </a>  </div>
+        <div class="col-sm-3 mt-5 card"> <a href="/admin/manage-mp-reports">
+        <p class="text-center"> <span class="display-1  fw-bold text-success" > {{$missing}}</span><span class="display-4  fw-bold text-danger" > +</span></p>
+ <h3 class ="text-center fw-bold text-danger">Missing Reports</h3>
+         </a>      
+     </div>
+        <div class="col-sm-3 mt-5 card"><a href="/admin/manage-fp-reports">
+        <p class="text-center"> <span class="display-1  fw-bold text-success" > {{$found}}</span><span class="display-4  fw-bold text-danger" > +</span></p>
+ <h3 class ="text-center fw-bold text-primary">Found Reports</h3>          </div>
+ </a>  </div>
+     
 
-                <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                    <i class="fas fa-minus"></i>
-                  </button>
-                  <button type="button" class="btn btn-tool" data-card-widget="remove">
-                    <i class="fas fa-times"></i>
-                  </button>
-                </div>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body p-0">
-                <div class="table-responsive">
-                  <table class="table m-0">
-                    <thead>
-                    <tr>
-                      <th> ID</th>
-                      <th>Item</th>
-                      <th>Status</th>
-                      <th>Popularity</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                      <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                      <td>Call of Duty IV</td>
-                      <td><span class="badge badge-success">Shipped</span></td>
-                      <td>
-                        <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                      <td>Samsung Smart TV</td>
-                      <td><span class="badge badge-warning">Pending</span></td>
-                      <td>
-                        <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                      <td>iPhone 6 Plus</td>
-                      <td><span class="badge badge-danger">Delivered</span></td>
-                      <td>
-                        <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                      <td>Samsung Smart TV</td>
-                      <td><span class="badge badge-info">Processing</span></td>
-                      <td>
-                        <div class="sparkbar" data-color="#00c0ef" data-height="20">90,80,-90,70,-61,83,63</div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                      <td>Samsung Smart TV</td>
-                      <td><span class="badge badge-warning">Pending</span></td>
-                      <td>
-                        <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                      <td>iPhone 6 Plus</td>
-                      <td><span class="badge badge-danger">Delivered</span></td>
-                      <td>
-                        <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                      <td>Call of Duty IV</td>
-                      <td><span class="badge badge-success">Shipped</span></td>
-                      <td>
-                        <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
-                      </td>
-                    </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <!-- /.table-responsive -->
-              </div>
-              <!-- /.card-body -->
-              <div class="card-footer clearfix">
-                <a href="javascript:void(0)" class="btn btn-sm btn-info float-left">Place New Order</a>
-                <a href="javascript:void(0)" class="btn btn-sm btn-secondary float-right">View All Orders</a>
-              </div>
-              <!-- /.card-footer -->
-            </div>
-            <!-- /.card -->
-          </div>
-          <!-- /.col -->
-
-          <!-- /.col -->
-        </div>
-        <!-- /.row -->
       </div><!--/. container-fluid -->
     </section>
     <!-- /.content -->

@@ -17,8 +17,6 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('user_id')->unsigned()->nullable();
             $table->bigInteger('police_id')->unsigned()->nullable(); 
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('police_id')->references('id')->on('police_volunteers');
             $table->string('missing_id');
             $table->string('relation');
             $table->string('address');

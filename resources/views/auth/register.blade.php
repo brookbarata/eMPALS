@@ -57,7 +57,7 @@
 
                             <div class="col-md-6">
                             <select name="region" id="city" type="text" class="form-select form-control @error('region') is-invalid @enderror" name="region" value="{{ old('region') }}" required autocomplete="region" >
-                                <option selected>Select Region</option>
+                                <option disabled = "disabled" selected>Select Region</option>
                                 <option value="South West">South West Peoples Regional State</option>
                                 <option value="SNNPR">South Nation Nationalities Peoples Regional State</option>
                                 <option value="Sidama">Sidama Regional State</option>

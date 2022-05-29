@@ -6,6 +6,7 @@
 
    <h3 class="text-center fw-bold">Statistics</h3>
     <hr>
+    
 
 
 @endsection

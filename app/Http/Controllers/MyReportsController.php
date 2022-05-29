@@ -20,11 +20,13 @@ class MyReportsController extends Controller
     public function index()
     {
         $data['missing_report']= Missing::where('police_id', Auth::user()->id)
-                            ->get();
+                                       ->orderByDesc('created_at')
+                                        ->get();
                            
 
         $data['found_report']= Found::where('police_id', '=', Auth::user()->id)
-                            ->get();
+                             ->orderByDesc('created_at')
+                             ->get();
 
         return view('police_volunteer.my-reports', $data);
     }

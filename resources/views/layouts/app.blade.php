@@ -51,9 +51,8 @@
                             <a class="nav-link {{ Request::is('user/statistics') ? 'active':'' }}" href="{{ url('/user/statistics') }}">Statistics</a>
                         </li>
                         <li class="nav-item dropdown  ">
-                            <a class="nav-link dropdown-toggle {{ Request::is('user/help')|| Request::is('user/contact-us')|| Request::is('user/my-reports') ? 'active':'' }}" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">More</a>
+                            <a class="nav-link dropdown-toggle {{ Request::is('user/contact-us')|| Request::is('user/my-reports') ? 'active':'' }}" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">More</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="{{ url('/user/help') }}">Help</a></li>
                             <li><a class="dropdown-item" href="{{ url('/user/contact-us') }}">Contact Us</a></li>
                             <li><a class="dropdown-item" href="{{ url('/user/my-reports') }}">My Reports</a></li>
                         </ul>

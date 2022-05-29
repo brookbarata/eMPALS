@@ -32,6 +32,14 @@ class RespondMissingController extends Controller
        
     }
 
+    public function manageMissingResponses(){
+
+        $data['responses']= MissingResponses::orderByDesc('created_at')
+                                            ->paginate(6);
+    
+        return view('admin.manage-missing-responses', $data);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -103,6 +111,9 @@ class RespondMissingController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = MissingResponses::find($id);
+        $user->delete();
+       return redirect('admin/dashboard')->with('success', 'Report Deleted Succesfully.');
+   
     }
 }

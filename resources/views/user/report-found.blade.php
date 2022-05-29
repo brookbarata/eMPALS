@@ -34,15 +34,15 @@
                 </div>
              <div class="col mt-4">
                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio"  name="gender" id="gridRadios1" value="male">
+                    <input class="form-check-input" type="radio"  name="gender" id="gridRadios1" value="Male">
                     <label class="form-check-label fw-bold" for="gridRadios1">Male</label>
              </div>
               <div class="form-check form-check-inline">
-                     <input class="form-check-input" type="radio" name="gender" id="gridRadios2" value="female">
+                     <input class="form-check-input" type="radio" name="gender" id="gridRadios2" value="Female">
                      <label class="form-check-label fw-bold" for="gridRadios2">Female</label>
                </div>
               <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="gender" id="gridRadios3" value="other">
+                    <input class="form-check-input" type="radio" name="gender" id="gridRadios3" value="Other">
                     <label class="form-check-label fw-bold" for="gridRadios3">Other</label>
                </div>
              </div>
@@ -68,8 +68,8 @@
                 <input type="number"  step="any"  class="form-control" required name="weight" placeholder="Weight (Kg)" min=0 max=300>
                 </div>
             <div class="col">
-                <select class="form-select" name="region" >
-                    <option  selected>Select Region</option>
+            <select class="form-select" name="region" >
+                    <option  disabled = "disabled" selected>Select Region</option>
                     <option value="South West">South West Peoples Regional State</option>
                     <option value="SNNPR">South Nation Nationalities Peoples Regional State</option>
                     <option value="Sidama">Sidama Regional State</option>
@@ -83,7 +83,7 @@
                     <option value="Harari">Harari Regional State</option>
                     <option value="Addis Abeba">Addis Ababa City Adminstration</option>
                     <option value="Dire Dawa">Dire Dawa City Adminstration</option>
-                </select>            
+                </select>         
              </div>
         </div>
         <div class="row row-cols-1 row-cols-sm-2  mt-1 g-3">
