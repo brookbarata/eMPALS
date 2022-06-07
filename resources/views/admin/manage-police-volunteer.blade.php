@@ -76,7 +76,7 @@
           <a href="/admin/add-police-volunteer"> <button class="btn btn-primary btn-sm rounded-1" type="button" data-toggle="tooltip" data-placement="top" title="Add"><i class="fa fa-table"></i></button></a>
                   </li>
                   <li class="list-inline-item">
-                  <form method="POST" action="{{ route('manage-police-volunteer.destroy', $item)}}"  onsubmit= "return confirm('Delete?')"> 
+                  <form method="POST" action="{{ route('manage-police-volunteer.destroy', $item)}}"  onsubmit= "return confirm('Are you sure to delete police/volunteer? NB: All reports with the police/volunteer is gone to be Deleted!!')"> 
                       @csrf  
                       @method('DELETE')
                      <button  class="btn btn-danger btn-sm rounded-1" type="submit" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>

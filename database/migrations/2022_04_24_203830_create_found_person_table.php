@@ -18,7 +18,8 @@ return new class extends Migration
             $table->bigInteger('user_id')->unsigned()->nullable();
             $table->bigInteger('police_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('police_id')->references('id')->on('police_volunteers')->onDelete('cascade');            $table->string('fname');
+            $table->foreign('police_id')->references('id')->on('police_volunteers')->onDelete('cascade');           
+            $table->string('fname');
             $table->string('mname');
             $table->string('lname');
             $table->integer('age');

@@ -25,9 +25,11 @@
     <section>
     <div class="container">
     <div class="row justify-content-center">
-      @if(session('success'))
+    <div class="col-sm-12">
+    @if(session('success'))
         <p class="alert alert-success "> {{ session('success') }} </p>
     @endif
+   </div>
     <hr>
   @if(count($found_report) > 0)
   <div class="table-responsive">

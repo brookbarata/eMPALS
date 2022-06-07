@@ -1,4 +1,4 @@
-@extends('layouts.for_auth')
+@extends('layouts.for_police_auth')
 
 @section('content')
 <div class="container mt-5">

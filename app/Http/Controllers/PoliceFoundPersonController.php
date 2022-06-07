@@ -12,9 +12,7 @@ use Illuminate\Support\Facades\Validator;
 
 class PoliceFoundPersonController extends Controller
 {
-    //
-
-  
+    
 
     public function create(){
         

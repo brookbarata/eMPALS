@@ -89,7 +89,7 @@
             <a href="#" class="nav-link  {{ Request::is('admin/add-police-volunteer')||Request::is('admin/manage-police-volunteer')? 'active':'' }}">
               <i class="fas fa-user-tie"></i>
               <p>
-              &nbsp;&nbsp; &nbsp; Police-Volunteer
+              &nbsp;&nbsp;  Police-Volunteer
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
@@ -97,13 +97,13 @@
               <li class="nav-item">
                 <a href="/admin/add-police-volunteer" class="nav-link {{ Request::is('admin/add-police-volunteer')? 'active':'' }}">
                   <i class="fas fa-user-plus"></i>
-                  <p> &nbsp; &nbsp; Add Police Volunteer</p>
+                  <p> &nbsp;  Add Police Volunteer</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="/admin/manage-police-volunteer" class="nav-link {{ Request::is('admin/manage-police-volunteer')? 'active':'' }}">
                   <i class="fas fa-user-cog"></i>
-                  <p> &nbsp;&nbsp; Manage Police/Volunteer</p>
+                  <p> Manage Police/Volunteer</p>
                 </a>
               </li>
             </ul>
@@ -114,7 +114,7 @@
             <a href="/admin/manage-found-responses" class="nav-link {{ Request::is('admin/manage-found-responses')? 'active':'' }}">
               <i class="fas fa-id-card"></i>
               <p>
-              &nbsp;&nbsp;&nbsp;  Found Responses
+              &nbsp;&nbsp;  Found Responses
               </p>
             </a>
           </li>
@@ -123,7 +123,7 @@
             <a href="/admin/manage-missing-responses" class="nav-link {{ Request::is('admin/manage-missing-responses')? 'active':'' }}">
               <i class="far fa-id-card"></i>
               <p>
-              &nbsp;&nbsp;&nbsp;   Missing Responses
+              &nbsp;&nbsp;   Missing Responses
               </p>
             </a>
           </li>
@@ -132,7 +132,7 @@
             <a href="/admin/manage-fp-reports" class="nav-link {{ Request::is('admin/manage-fp-reports')? 'active':'' }}">
               <i class="fas fa-street-view"></i>
               <p>
-              &nbsp;&nbsp;&nbsp; Manage Found Reports
+              &nbsp;&nbsp; Manage Found Reports
               </p>
             </a>
           </li>
@@ -141,7 +141,7 @@
           <a href="/admin/manage-mp-reports" class="nav-link {{ Request::is('admin/manage-mp-reports')? 'active':'' }}">
               <i class="fas fa-user-ninja"></i>
               <p>
-              &nbsp;&nbsp;&nbsp; Manage Missing Reports
+              &nbsp;&nbsp;Manage Missing Reports
               </p>
             </a>
           </li>

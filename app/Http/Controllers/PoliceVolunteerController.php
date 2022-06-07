@@ -37,7 +37,7 @@ class PoliceVolunteerController extends Controller
 
     public function addPoliceVolunteer(){
     
-        return view('admin.add_police_volunteer');
+        return view('admin.add-police-volunteer');
     }
 
     public function managePoliceVolunteer(){
@@ -45,7 +45,7 @@ class PoliceVolunteerController extends Controller
                                          ->paginate(6);
        
     
-        return view('admin.manage_police_volunteer',$data);
+        return view('admin.manage-police-volunteer',$data);
     }
 
     public function index(){
@@ -65,6 +65,7 @@ class PoliceVolunteerController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+
         $police_volunteer = PoliceVolunteer::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -76,30 +77,17 @@ class PoliceVolunteerController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
+        
             return redirect('admin/dashboard')->with('success', 'New Police Volunteer added Succesfully');
            
     }
  
-    public function show($id)
-    {
-        //
-    }
-
-    public function edit($id)
-    {
-        //
-    }
-
-    public function update(Request $request, $id)
-    {
-          }
-
 
     public function destroy($id)
     {
         $user = PoliceVolunteer::find($id);
         $user->delete();
-       return redirect('admin/dashboard')->with('success', 'Report Deleted Succesfully.');
+       return redirect('admin/dashboard')->with('success', 'Police Volunteer Deleted Succesfully.');
    
     }
 }

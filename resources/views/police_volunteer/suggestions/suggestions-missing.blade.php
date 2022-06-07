@@ -17,7 +17,7 @@
                             <div class='md-4  col rounded end'>
                                   <img src="{{ asset($item->photo) }}" height="160" width="160" class="img " />
                             <br>
-                            <h5 class ="fw-bold text-danger">{{$item->fname}} {{$item->mname}} {{$item->mname}}</h5>
+                            <h5 class ="fw-bold text-danger">{{$item->fname}} {{$item->mname}} {{$item->lname}}</h5>
                             <h6>{{$item->age}} yrs Old</h6>
                             <div class="btn-group">
                             <a href="{{ route('list-of-found-person.show', $item)  }}"><button class="py-0 px-1 btn btn-sm btn-primary">View</button></a>
@@ -27,8 +27,8 @@
                             <div class='md-4  col  rounded' >
                                   <img src="{{ asset($item->photo) }}" height="170" width="170" class="img " />
                             <br>
-                            <h5 class ="fw-bold text-danger">{{$item->fname}}  {{$item->mname}}{{$item->mname}}</h4>
-                            <h6>{{$item->fname}}  {{$item->mname}}</h6>
+                            <h5 class ="fw-bold text-danger">{{$item->fname}}  {{$item->mname}}{{$item->lname}}</h4>
+                            <h6>{{$item->age}} yrs Old</h6>
                             <div class="btn-group mt-0">
                             <a href=" {{ route('list-of-found-person.show', $item)  }}"><button class="py-0 px-1 btn btn-sm btn-primary">View</button></a>
                             <a href="{{ route('respond-found.show', $item)  }}"><button class="mx-1 py-0 px-1 btn btn-sm btn-outline-secondary">Respond</button></a>
@@ -37,6 +37,7 @@
                             @if($i % 4 == 0)
                         </div>
                         </div>
+                        <hr>
                         <div class="row text-center">
                             @else
                             </div>

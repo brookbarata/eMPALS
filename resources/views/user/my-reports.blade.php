@@ -53,10 +53,10 @@
                      <a href="/user/report-missing"> <button class="btn btn-primary btn-sm rounded-1" type="button" data-toggle="tooltip" data-placement="top" title="Add"><i class="fa fa-table"></i></button></a>
                   </li>
                   <li class="list-inline-item">
-                  <a href="{{ route('list-of-missing-person.edit', $item)}}"> <button class="btn btn-success btn-sm rounded-1" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></button></a>
+                  <a href="{{ route('user-list-of-missing-person.edit', $item)}}"> <button class="btn btn-success btn-sm rounded-1" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></button></a>
                   </li>
                   <li class="list-inline-item">
-                  <form method="POST" action="{{ route('list-of-missing-person.destroy', $item)}}"  onsubmit= "return confirm('Delete?')"> 
+                  <form method="POST" action="{{ route('user-list-of-missing-person.destroy', $item)}}"  onsubmit= "return confirm('Delete?')"> 
                       @csrf  
                       @method('DELETE')
                      <button  class="btn btn-danger btn-sm rounded-1" type="submit" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
@@ -74,7 +74,7 @@
   </div>
   @else
   <div>
-  <p class=" px-5 text-danger">Oh, Noops! You don't have any found person reports.</p>
+  <p class=" px-5 text-danger">Oh, Noops! You don't have any Missing person reports.</p>
   </div>
   @endif
 
@@ -114,10 +114,10 @@
                      <a href="/user/report-found"> <button class="btn btn-primary btn-sm rounded-1" type="button" data-toggle="tooltip" data-placement="top" title="Add"><i class="fa fa-table"></i></button></a>
                   </li>
                   <li class="list-inline-item">
-                     <a href="{{ route('list-of-found-person.edit', $item)}}"> <button class="btn btn-success btn-sm rounded-1" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></button></a>
+                     <a href="{{ route('user-list-of-found-person.edit', $item)}}"> <button class="btn btn-success btn-sm rounded-1" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></button></a>
                   </li>
                   <li class="list-inline-item">
-                  <form method="POST" action="{{ route('list-of-found-person.destroy', $item)}}"  onsubmit= "return confirm('Delete?')"> 
+                  <form method="POST" action="{{ route('user-list-of-found-person.destroy', $item)}}"  onsubmit= "return confirm('Delete?')"> 
                       @csrf  
                       @method('DELETE')
                      <button  class="btn btn-danger btn-sm rounded-1" type="submit" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
@@ -134,7 +134,7 @@
   </div>
   @else
   <div>
-    <p class=" px-5 text-danger">Oh, Noops! You don't have any found person reports.</p>
+    <p class=" px-5 text-danger">Oh, Noops! You don't have any Found person reports.</p>
   </div>
   @endif
 </div>

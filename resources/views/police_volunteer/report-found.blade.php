@@ -13,7 +13,7 @@
                     <div class="alert alert-warning p-2" role="alert">
                    Please insert some valid values, Thank you!
                     </div>
-      <form method="POST" action="{{ route('police_volunteer_found.store') }}" enctype="multipart/form-data">
+      <form method="POST" action="{{ route('police-found-report.store') }}" enctype="multipart/form-data">
          @csrf
         <div class="row row-cols-sm-1 mt-1 ">
             <div class="col">
@@ -123,8 +123,13 @@
         </div>
                 <div class ="col-md-3">
                         <h5 class="text-center bg-dark rounded p-1 text-white">How eMPALS works to find found person?</h5>
-                        <div  class=" bg-light rounded card-body">
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minima placeat sapiente harum, sunt enim nisi aliquam nulla eaque, quod fuga corporis, deleniti consectetur soluta fugiat reprehenderit architecto ut! Dolores, harum?
+                        <div  class=" card bg-light rounded card-body" style="text-align:justify;">
+                        Electronic Missing Person Announcement and Locating System (eMPALS) contains 
+                        functionality to add complaints as well as view all complaints. By using these complaints, Users
+                        will try to find a lost person in various areas. This System will upload complaints on the 
+                        webserver to be accessed by any of the users accessing this system. In this project, eMPALS 
+                        uses a filtering algorithm that presents the solution for this problem. Admin 
+                        continuously updates the database and deletes unnecessary data from the reports. 
                     </div>
                 </div>
             </div>

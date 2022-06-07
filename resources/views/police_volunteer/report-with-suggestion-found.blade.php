@@ -28,7 +28,7 @@
        </div>
 
 
-      <form method="POST" action="{{ route('info_police_found_date.store') }}">
+      <form method="POST" action="{{ route('police-found-date.store') }}">
          @csrf
       <div class="row row-cols-sm-1 mt-1 ">
             <div class="col">

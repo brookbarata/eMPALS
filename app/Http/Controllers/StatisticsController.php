@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Missing;
+use App\Models\Found;
+use App\Models\User;
+use App\Models\PoliceVolunteer;
+
 
 class StatisticsController extends Controller
 {
@@ -13,11 +18,21 @@ class StatisticsController extends Controller
      
     public function index()
     {
-        return view('police_volunteer.statistics');
+        $count['user'] = User::count();
+        $count['police'] = PoliceVolunteer::count();
+        $count['missing'] = Missing::count();
+        $count['found'] = Found::count();
+
+        return view('police_volunteer.statistics',$count);
     }
     public function create()
     {
-        return view('user.statistics');
+        $count['user'] = User::count();
+        $count['police'] = PoliceVolunteer::count();
+        $count['missing'] = Missing::count();
+        $count['found'] = Found::count();
+
+        return view('user.statistics',$count);
     }
 
 }

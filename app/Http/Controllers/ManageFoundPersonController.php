@@ -18,67 +18,18 @@ class ManageFoundPersonController extends Controller
             $data['found_report']= Found::orderByDesc('created_at')
                                 ->paginate(8);
 
-            return view('admin.manage_fp_reports', $data);
+            return view('admin.manage-fp-reports', $data);
         }
     
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $found_report=Found::find($id);
         $found_report->confirmed = 1;
         $found_report->save();
         
-        return redirect('admin/dashboard')->with('success', 'Report Validated Succesfully.');
+        return redirect('admin/manage-fp-reports');
 
     }
 
@@ -92,7 +43,7 @@ class ManageFoundPersonController extends Controller
     {
         $found_report = Found::find($id);
         $found_report->delete();
-       return redirect('admin/dashboard')->with('success', 'Report Deleted Succesfully.');
+       return redirect('admin/manage-fp-reports')->with('success', 'Report Deleted Succesfully.');
     
     }
 }

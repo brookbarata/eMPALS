@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Missing;
-use App\Models\Found;
 use App\Models\MissingResponses;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -22,15 +21,7 @@ class RespondMissingController extends Controller
         return view('police_volunteer.respond-missing');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-       
-    }
+
 
     public function manageMissingResponses(){
 
@@ -40,12 +31,7 @@ class RespondMissingController extends Controller
         return view('admin.manage-missing-responses', $data);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
         $validator= Validator::make($request->all(),[
@@ -67,12 +53,7 @@ class RespondMissingController extends Controller
           
       }    
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
         $profile = Missing::find($id);
@@ -80,40 +61,12 @@ class RespondMissingController extends Controller
         return view('police_volunteer.respond-missing', compact('profile'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $user = MissingResponses::find($id);
         $user->delete();
-       return redirect('admin/dashboard')->with('success', 'Report Deleted Succesfully.');
+       return redirect('admin/manage-missing-responses')->with('success', 'Report Deleted Succesfully.');
    
     }
 }

@@ -39,8 +39,8 @@
                             <h5 class ="fw-bold text-danger">{{$item->fname}} {{$item->mname}} {{$item->lname}}</h5>
                             <h6>{{$item->age}} yrs Old</h6>
                             <div class="btn-group">
-                            <a href="{{ route('list-of-missing-person.show', $item)  }}"><button class="py-0 px-2 btn btn-sm btn-danger">View</button></a>
-                            <a href="{{ route('respond-missing.show', $item)  }}"><button class="mx-1 py-0 px-2 btn btn-sm btn-outline-secondary">Respond</button></a>
+                            <a href="{{ route('list-of-found-person.show', $item)  }}"><button class="py-0 px-2 btn btn-sm btn-danger">View</button></a>
+                            <a href="{{ route('respond-found.show', $item)  }}"><button class="mx-1 py-0 px-2 btn btn-sm btn-outline-secondary">Respond</button></a>
                             </div>
                         @else
                         <div class='md-4  col end'>
@@ -49,13 +49,14 @@
                             <h5 class ="fw-bold text-danger">{{$item->fname}} {{$item->mname}} {{$item->lname}}</h5>
                             <h6>{{$item->age}} yrs Old</h6>
                             <div class="btn-group">
-                            <a href="{{ route('list-of-missing-person.show', $item)  }}"><button class="py-0 px-2 btn btn-sm btn-danger">View</button></a>
-                            <a href="{{ route('respond-missing.show', $item)  }}"><button class="mx-1 py-0 px-2 btn btn-sm btn-outline-secondary">Respond</button></a>
+                            <a href="{{ route('list-of-found-person.show', $item)  }}"><button class="py-0 px-2 btn btn-sm btn-danger">View</button></a>
+                            <a href="{{ route('respond-found.show', $item)  }}"><button class="mx-1 py-0 px-2 btn btn-sm btn-outline-secondary">Respond</button></a>
                             </div>
                        @endif
                             @if($i % 4 == 0)
                         </div>
                         </div>
+                        <hr>
                         <div class="row text-center">
                             @else
                             </div>

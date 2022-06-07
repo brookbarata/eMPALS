@@ -9,7 +9,7 @@
     <div class="alert alert-info p-2" role="alert">
      Choose first from "Filter-by" selection you want to be search and fill the attribute respectively with the Filter-by Option and hit <span class="fw-bold">Filter-<span class="text-danger">Out</span></span> button.
     </div>
-      <form action="{{ route('filter-out.index') }}" method="POST">
+      <form action="{{ route('filter-out.store') }}" method="POST">
       @csrf
       <div class="row form-row align-items-center">
             <div class="col-md-4">

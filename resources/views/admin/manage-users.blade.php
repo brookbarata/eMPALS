@@ -29,7 +29,6 @@
     @if(session('success'))
         <p class="alert alert-success "> {{ session('success') }} </p>
     @endif
-
     @if(count($users) > 0)
     <div class="card">
               <div class="card-header border-transparent">
@@ -71,7 +70,7 @@
         <td>
           <ul class="list-inline sm-12 m-0">
                   <li class="list-inline-item">
-                  <form method="POST" action="{{ route('manage-user.destroy', $item)}}"  onsubmit= "return confirm('Delete?')"> 
+                  <form method="POST" action="{{ route('manage-user.destroy', $item)}}"  onsubmit= "return confirm('Are you sure to delete user? NB: All reports with the user is gone to be Deleted!!')"> 
                       @csrf  
                       @method('DELETE')
                      <button  class="btn btn-danger btn-sm rounded-1" type="submit" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>

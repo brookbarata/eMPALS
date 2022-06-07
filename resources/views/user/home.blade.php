@@ -6,12 +6,12 @@
    @if(session('success'))
      <p class="alert alert-success mx-5"> {{ session('success') }} </p>
    @endif
-            <form class="d-grid gap-2 col-sm-6 mx-auto mb-3">
+            <div class="d-grid gap-2 col-sm-6 mx-auto mb-3">
                     <div class="d-flex">
-                        <input class="form-control me-2 rounded" type="search" placeholder="Who you are looking for?"  aria-label="Search">
-                        <button class="btn btn-outline-primary" type="submit">Search</button>
-                    </div>
-            </form>
+                        <p style="letter-spacing:2px" class="text-dark fw-bold  h2 text-center"> Ethiopian Missing Person Announcement and Locating System (<span class="text-primary" >eMPALS</span>) </p>
+                 
+            </div>
+</div>
     <div class="row">
         <div class="col-sm-8">
        
@@ -23,8 +23,8 @@
           <h2>Welcome to <span class="text-primary fw-bold" >eMPALS</span></h2>
       <p>Ethiopian Electronic Missing Person Announcement and Locating System.</p>
       <div class="d-flex gap-4 col-sm-8">
-      <a class="text-center btn btn-primary btn-lg btn-md-4 mx-3  fw-bold border-white" href="/police_volunteer/list-of-missing-person"> Missing Person List >>></a>
-      <a class="text-center btn btn-primary btn-lg btn-md-4 mx-auto  fw-bold border-white " href="/police_volunteer/list-of-found-person"> Found Person List >>></a>
+      <a class="text-center btn btn-primary btn-lg btn-md-4 mx-3  fw-bold border-white" href="/user/list-of-missing-person"> Missing Person List >>></a>
+      <a class="text-center btn btn-primary btn-lg btn-md-4 mx-auto  fw-bold border-white " href="/user/list-of-found-person"> Found Person List >>></a>
       </div>
     </div>
   </section>

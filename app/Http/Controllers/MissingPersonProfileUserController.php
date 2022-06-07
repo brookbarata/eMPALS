@@ -9,33 +9,38 @@ use Illuminate\Support\Facades\Validator;
 
 
 
-class MissingPersonProfileController extends Controller
+class MissingPersonProfileUserController extends Controller
 {
     
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(Request $request){
 
         $data["search"]=$request->get('search');
-        
+       
         $query = Missing::where(function ($query) use ($data){
-            $query->where('fname', 'like', '%'.$data['search'].'%'); 
-            $query->orWhere('mname', 'like', '%'.$data['search'].'%');  
-            $query->orWhere('lname', 'like', '%'.$data['search'].'%') ;   
-            $query->orWhere('city', 'like', '%'.$data['search'].'%') ;             
-            $query->orWhere('sub_city', 'like', '%'.$data['search'].'%');  
-            $query->orWhere('region', 'like', '%'.$data['search'].'%');                              
-            $query->orWhere('nick_name', 'like', '%'.$data['search'].'%');  
-            $query->orWhere('brith_place', 'like', '%'.$data['search'].'%'); 
-            $query->orWhere('age', '=', $data['search']); 
-            $query->orWhere('street_name', 'like', '%'.$data['search'].'%'); 
-            $query->orWhere('special_description', 'like', '%'.$data['search'].'%');
-              });
-   
-    
-           $data["missing"] = $query->where('confirmed',"1")
-                            ->orderByDesc('created_at')
-                            ->paginate(8);
+                        $query->where('fname', 'like', '%'.$data['search'].'%'); 
+                        $query->orWhere('mname', 'like', '%'.$data['search'].'%');                
+                        $query->orWhere('lname', 'like', '%'.$data['search'].'%') ;   
+                        $query->orWhere('city', 'like', '%'.$data['search'].'%') ;             
+                        $query->orWhere('sub_city', 'like', '%'.$data['search'].'%');  
+                        $query->orWhere('region', 'like', '%'.$data['search'].'%');                              
+                        $query->orWhere('nick_name', 'like', '%'.$data['search'].'%');  
+                        $query->orWhere('brith_place', 'like', '%'.$data['search'].'%'); 
+                        $query->orWhere('age', '=', $data['search']); 
+                        $query->orWhere('street_name', 'like', '%'.$data['search'].'%'); 
+                        $query->orWhere('special_description', 'like', '%'.$data['search'].'%');
+                          });
+               
+                
+            $data["missing"] = $query->where('confirmed',"1")
+                                        ->orderByDesc('created_at')
+                                        ->paginate(8);
 
-        return view('police_volunteer.list-of-missing-person',$data);
+        return view('user.list-of-missing-person',$data);
      }
 
 
@@ -43,7 +48,7 @@ class MissingPersonProfileController extends Controller
     {
 
         $profile = Missing::find($id);
-        return view('police_volunteer.missing-person-profile', compact('profile'));
+        return view('user.missing-person-profile', compact('profile'));
 
     }
 
@@ -51,7 +56,7 @@ class MissingPersonProfileController extends Controller
     public function edit($id)
     {
         $data['missing_report'] = Missing::find($id);
-        return view('police_volunteer.edit-missing-reports', $data);
+        return view('user.edit-missing-reports', $data);
     }
 
     public function update(Request $request, $id)
@@ -75,11 +80,11 @@ class MissingPersonProfileController extends Controller
             'special_description' => ['required', 'string', 'max:255'],
         ]);
 
+        
         if($validator->fails()){
             return back()->with('danger', 'Error! Please Enter Some Valid Inputs.');
       }
       else{
-
             $missing_report=Missing::find($id);
             $missing_report->fname = $request->fname;
             $missing_report->mname = $request->mname;
@@ -96,7 +101,7 @@ class MissingPersonProfileController extends Controller
             $missing_report->street_name = $request->street_name;
             $missing_report->house_no = $request->house_no;
             $missing_report->special_description = $request->special_description;
-            $missing_report->confirmed = 1;
+            $missing_report->confirmed = 0;
         
             
             $fileName = time().$request->file('photo')->getClientOriginalName();
@@ -106,14 +111,15 @@ class MissingPersonProfileController extends Controller
 
             $missing_report->save();
            
-            return redirect('police_volunteer/my-reports')->with('success', 'Missing Person Edited Succesfully.');
-      }
+            return redirect('user/my-reports')->with('success', 'Missing Person Edited Succesfully.');
+    
     }
+}
 
     public function destroy($id)
     {
         $missing_report = Missing::find($id);
         $missing_report->delete();
-       return redirect('police_volunteer/my-reports')->with('success', 'Report Deleted Succesfully.');
+       return redirect('user/my-reports')->with('success', 'Report Deleted Succesfully.');
     }  
 }

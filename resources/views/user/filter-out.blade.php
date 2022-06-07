@@ -7,10 +7,28 @@
    <h3 class="text-center fw-bold">Filter-<span class="text-danger fw-bold">Out</span> </h3>
     <hr>
     <div class="alert alert-info p-2" role="alert">
-       Fill in the attribute you want to be searched by and hit <span class="fw-bold">Filter-<span class="text-danger">Out</span></span> button.
+     Choose first from "Filter-by" selection you want to be search and fill the attribute respectively with the Filter-by Option and hit <span class="fw-bold">Filter-<span class="text-danger">Out</span></span> button.
     </div>
-      <form action="{{ route('filter-out.store') }}" method="POST">
+      <form action="{{ route('user-filter-out.store') }}" method="POST">
       @csrf
+      <div class="row form-row align-items-center">
+            <div class="col-md-4">
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text fw-bold text-danger">Filter By</div>
+                        </div>
+                <select class="form-select" name="filter_by" >
+                    <option  value="all" selected>All</option>
+                    <option value="age">Age</option>
+                    <option value="fullname">Full Name</option>
+                    <option value="lastname">Only Last Name</option>
+                    <option value="cityorsubcity">City or Sub-city</option>
+                    <option value="special_markings">Special Markings</option>
+                    <option value="date">Report Date</option>
+                </select>  
+            </div>
+                </div>
+          </div>
             <div class="row form-row align-items-center">
                 <div class="col-md-4">
                     <div class="input-group mb-2">

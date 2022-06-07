@@ -3,22 +3,27 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Missing;
-use App\Models\InfoMissingDate;
+use App\Models\Found;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 
 
-class MissingPersonProfileController extends Controller
+
+class FoundPersonProfileUserController extends Controller
 {
     
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(Request $request){
 
         $data["search"]=$request->get('search');
-        
-        $query = Missing::where(function ($query) use ($data){
+        $query = Found::where(function ($query) use ($data){
             $query->where('fname', 'like', '%'.$data['search'].'%'); 
-            $query->orWhere('mname', 'like', '%'.$data['search'].'%');  
+            $query->orWhere('mname', 'like', '%'.$data['search'].'%');              
             $query->orWhere('lname', 'like', '%'.$data['search'].'%') ;   
             $query->orWhere('city', 'like', '%'.$data['search'].'%') ;             
             $query->orWhere('sub_city', 'like', '%'.$data['search'].'%');  
@@ -31,31 +36,31 @@ class MissingPersonProfileController extends Controller
               });
    
     
-           $data["missing"] = $query->where('confirmed',"1")
-                            ->orderByDesc('created_at')
-                            ->paginate(8);
+         $data["found"] = $query->where('confirmed',"1")
+                                    ->orderByDesc('created_at')
+                                    ->paginate(8);
 
-        return view('police_volunteer.list-of-missing-person',$data);
+        return view('user.list-of-found-person', $data);
      }
 
-
-    public function show($id)
+   
+    public function show($id )
     {
-
-        $profile = Missing::find($id);
-        return view('police_volunteer.missing-person-profile', compact('profile'));
-
+        $profile=Found::find($id);
+        return view('user.found-person-profile', compact('profile'));
     }
 
-
+   
     public function edit($id)
     {
-        $data['missing_report'] = Missing::find($id);
-        return view('police_volunteer.edit-missing-reports', $data);
+
+        $data['found_report'] = Found::find($id);
+        return view('user.edit-found-reports', $data);
     }
 
     public function update(Request $request, $id)
     {
+      
         $validator= Validator::make($request->all(),[
             'user_id'=>'max:255',
             'fname' => ['required', 'string', 'max:255'],
@@ -79,41 +84,40 @@ class MissingPersonProfileController extends Controller
             return back()->with('danger', 'Error! Please Enter Some Valid Inputs.');
       }
       else{
-
-            $missing_report=Missing::find($id);
-            $missing_report->fname = $request->fname;
-            $missing_report->mname = $request->mname;
-            $missing_report->lname = $request->lname;
-            $missing_report->gender = $request->gender;
-            $missing_report->age = $request->age;
-            $missing_report->brith_place = $request->brith_place;
-            $missing_report->nick_name = $request->nick_name;
-            $missing_report->height = $request->height;
-            $missing_report->weight = $request->weight;
-            $missing_report->region = $request->region;
-            $missing_report->city = $request->city;
-            $missing_report->sub_city = $request->sub_city;
-            $missing_report->street_name = $request->street_name;
-            $missing_report->house_no = $request->house_no;
-            $missing_report->special_description = $request->special_description;
-            $missing_report->confirmed = 1;
+            $found_report=Found::find($id);
+            $found_report->fname = $request->fname;
+            $found_report->mname = $request->mname;
+            $found_report->lname = $request->lname;
+            $found_report->gender = $request->gender;
+            $found_report->age = $request->age;
+            $found_report->brith_place = $request->brith_place;
+            $found_report->nick_name = $request->nick_name;
+            $found_report->height = $request->height;
+            $found_report->weight = $request->weight;
+            $found_report->region = $request->region;
+            $found_report->city = $request->city;
+            $found_report->sub_city = $request->sub_city;
+            $found_report->street_name = $request->street_name;
+            $found_report->house_no = $request->house_no;
+            $found_report->special_description = $request->special_description;
+            $found_report->confirmed = 0;
         
             
             $fileName = time().$request->file('photo')->getClientOriginalName();
             $path = $request->file('photo')->storeAs('images', $fileName, 'public');
 
-            $missing_report["photo"] = '/storage/'.$path;
+            $found_report["photo"] = '/storage/'.$path;
 
-            $missing_report->save();
+            $found_report->save();
            
-            return redirect('police_volunteer/my-reports')->with('success', 'Missing Person Edited Succesfully.');
+            return redirect('user/my-reports')->with('success', 'Found Person Edited Succesfully.');
       }
     }
 
     public function destroy($id)
     {
-        $missing_report = Missing::find($id);
-        $missing_report->delete();
-       return redirect('police_volunteer/my-reports')->with('success', 'Report Deleted Succesfully.');
-    }  
+        $found_report = Found::find($id);
+        $found_report->delete();
+       return redirect('user/my-reports')->with('success', 'Report Deleted Succesfully.');
+    }
 }

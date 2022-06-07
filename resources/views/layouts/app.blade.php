@@ -8,6 +8,11 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'eMPALS') }}</title>
+ 
+ 
+    <!-- Font Awesome Icons -->
+   <link rel="stylesheet" href="{{ asset( 'backend/plugins/fontawesome-free/css/all.min.css') }}">
+ 
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -45,7 +50,7 @@
                            <a class="nav-link {{ Request::is('user/report-found-person')||Request::is('user/report-found')||Request::is('user/report-with-suggestion-found') ? 'active':'' }}" href="{{ url('/user/report-found') }}">Locate Found Person</a>
                         </li>
                         <li class="nav-item   ">
-                           <a class="nav-link {{ Request::is('user/filter-out') ? 'active':'' }}" href="{{ url('/user/filter-out') }}">Filter Out</a>
+                             <a class="nav-link {{ Request::is('user/filter-out') ? 'active':'' }}" href="{{ url('/user/filter-out') }}">Filter Out</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ Request::is('user/statistics') ? 'active':'' }}" href="{{ url('/user/statistics') }}">Statistics</a>

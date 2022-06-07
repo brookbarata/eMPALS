@@ -1,4 +1,4 @@
-@extends('layouts.police_volunteer_app')
+@extends('layouts.app')
 
 @section('content')
 
@@ -7,7 +7,7 @@
            <div class="d-grid col-sm-3 mx-auto">
            <nav aria-label="breadcrumb" class="bg-light">
                     <ol class="breadcrumb my-1 px-0">
-                        <li class="breadcrumb-item"><a href="/police_volunteer/index">Home</a></li>
+                        <li class="breadcrumb-item"><a href="/user/home">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">List of Missing Persons</li>
                     </ol>
                     </nav>
@@ -45,18 +45,18 @@
                             <h5 class ="fw-bold text-danger">{{$item->fname}} {{$item->mname}} {{$item->lname}}</h5>
                             <h6>{{$item->age}} yrs Old</h6>
                             <div class="btn-group">
-                            <a href="{{ route('list-of-missing-person.show', $item)  }}"><button class="py-0 px-2 btn btn-sm btn-danger">View</button></a>
-                            <a href="{{ route('respond-missing.show', $item)  }}"><button class="mx-1 py-0 px-2 btn btn-sm btn-outline-secondary">Respond</button></a>
+                            <a href="{{ route('user-list-of-missing-person.show', $item)  }}"><button class="py-0 px-2 btn btn-sm btn-danger">View</button></a>
+                            <a href="{{ route('user-respond-missing.show', $item)  }}"><button class="mx-1 py-0 px-2 btn btn-sm btn-outline-secondary">Respond</button></a>
                             </div>
                         @else
-                            <div class='md-4 m-2  col'>
+                            <div class='md-4  col'>
                                   <img src="{{ asset($item->photo) }}" height="170" width="170" class="img " />
                             <br>
                             <h5 class ="fw-bold text-danger">{{$item->fname}}  {{$item->mname}} {{$item->lname}}</h4>
                             <h6>{{$item->age}} yrs Old</h6>
                             <div class="btn-group mt-0">
-                            <a href=" {{ route('list-of-missing-person.show', $item)  }}"><button class="py-0 px-2 btn btn-sm btn-danger">View</button></a>
-                            <a href="{{ route('respond-missing.show', $item)  }}"><button class="mx-1 py-0 px-2 btn btn-sm btn-outline-secondary">Respond</button></a>
+                            <a href="{{ route('user-list-of-missing-person.show', $item)  }}"><button class="py-0 px-2 btn btn-sm btn-danger">View</button></a>
+                            <a href="{{ route('user-respond-missing.show', $item)  }}"><button class="mx-1 py-0 px-2 btn btn-sm btn-outline-secondary">Respond</button></a>
                             </div>
                        @endif
                             @if($i % 4 == 0)

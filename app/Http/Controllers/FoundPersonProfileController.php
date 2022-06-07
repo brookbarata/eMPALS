@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Found;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 
 
@@ -14,33 +15,27 @@ class FoundPersonProfileController extends Controller
     public function index(Request $request){
 
         $data["search"]=$request->get('search');
-        $data["found"] = Found::where('confirmed','=',"1")
-                                ->where('fname', 'like', '%'.$data['search'].'%')          
-                                ->orWhere('mname', 'like', '%'.$data['search'].'%')                
-                                ->orWhere('lname', 'like', '%'.$data['search'].'%')    
-                                ->orWhere('city', 'like', '%'.$data['search'].'%')                
-                                ->orWhere('sub_city', 'like', '%'.$data['search'].'%')  
-                                ->orWhere('region', 'like', '%'.$data['search'].'%')                              
-                                ->orWhere('nick_name', 'like', '%'.$data['search'].'%')  
-                                ->orWhere('brith_place', 'like', '%'.$data['search'].'%') 
-                                ->orWhere('age', '=', $data['search']) 
-                                ->orWhere('street_name', 'like', '%'.$data['search'].'%') 
-                                ->orWhere('special_description', 'like', '%'.$data['search'].'%') 
-                                ->orderByDesc('created_at')
-                                ->paginate(8);
+        $query = Found::where(function ($query) use ($data){
+            $query->where('fname', 'like', '%'.$data['search'].'%'); 
+            $query->orWhere('mname', 'like', '%'.$data['search'].'%');                             
+            $query->orWhere('lname', 'like', '%'.$data['search'].'%') ;   
+            $query->orWhere('city', 'like', '%'.$data['search'].'%') ;             
+            $query->orWhere('sub_city', 'like', '%'.$data['search'].'%');  
+            $query->orWhere('region', 'like', '%'.$data['search'].'%');                              
+            $query->orWhere('nick_name', 'like', '%'.$data['search'].'%');  
+            $query->orWhere('brith_place', 'like', '%'.$data['search'].'%'); 
+            $query->orWhere('age', '=', $data['search']); 
+            $query->orWhere('street_name', 'like', '%'.$data['search'].'%'); 
+            $query->orWhere('special_description', 'like', '%'.$data['search'].'%');
+              });
+   
+    
+         $data["found"] = $query->where('confirmed',"1")
+                                    ->orderByDesc('created_at')
+                                    ->paginate(8);
+
         return view('police_volunteer.list-of-found-person', $data);
      }
-
-
-    public function create()
-    {
-        //
-    }
-
-    public function store(Request $request)
-    {
-        //
-    }
 
    
     public function show($id )
@@ -60,7 +55,7 @@ class FoundPersonProfileController extends Controller
     public function update(Request $request, $id)
     {
       
-        $request->validate([
+        $validator= Validator::make($request->all(),[
             'user_id'=>'max:255',
             'fname' => ['required', 'string', 'max:255'],
             'mname' => ['required', 'string', 'max:255'],
@@ -79,6 +74,10 @@ class FoundPersonProfileController extends Controller
             'special_description' => ['required', 'string', 'max:255'],
         ]);
 
+        if($validator->fails()){
+            return back()->with('danger', 'Error! Please Enter Some Valid Inputs.');
+      }
+      else{
             $found_report=Found::find($id);
             $found_report->fname = $request->fname;
             $found_report->mname = $request->mname;
@@ -106,7 +105,7 @@ class FoundPersonProfileController extends Controller
             $found_report->save();
            
             return redirect('police_volunteer/my-reports')->with('success', 'Found Person Edited Succesfully.');
-    
+      }
     }
 
     public function destroy($id)

@@ -11,10 +11,6 @@ use Illuminate\Support\Facades\Validator;
 class InfoPoliceFoundDateController extends Controller
 {
     
-    public function index(){
-
-
-    }
     public function create()
     {
         return view('police_volunteer/report-with-suggestion-found');
@@ -80,50 +76,6 @@ else{
             
         }
 
-        /**
-         * Display the specified resource.
-         *
-         * @param  \App\Models\InfoFoundDate  $infoFoundDate
-         * @return \Illuminate\Http\Response
-         */
-        public function show(InfoFoundDate $infoFoundDate)
-        {
-            //
-        }
-
-        /**
-         * Show the form for editing the specified resource.
-         *
-         * @param  \App\Models\InfoFoundDate  $infoFoundDate
-         * @return \Illuminate\Http\Response
-         */
-        public function edit(InfoFoundDate $infoFoundDate)
-        {
-            //
-        }
-
-        /**
-         * Update the specified resource in storage.
-         *
-         * @param  \Illuminate\Http\Request  $request
-         * @param  \App\Models\InfoFoundDate  $infoMissingDate
-         * @return \Illuminate\Http\Response
-         */
-        public function update(Request $request, InfoFoundDate $infoFoundDate)
-        {
-            //
-        }
-
-        /**
-        * Remove the specified resource from storage.
-        *
-        * @param  \App\Models\InfoFoundDate  $infoFoundDate
-        * @return \Illuminate\Http\Response
-        */
-        public function destroy(InfoFoundDate $infoFoundDate)
-        {
-            //
-        }
 }
 
 

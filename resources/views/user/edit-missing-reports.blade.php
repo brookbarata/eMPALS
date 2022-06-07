@@ -1,4 +1,4 @@
-@extends('layouts.police_volunteer_app')
+@extends('layouts.app')
 
 @section('content')
     
@@ -13,7 +13,7 @@
                 <div class="alert alert-warning p-2" role="alert">
                    Please edit with some valid inputs Thank you!
                     </div>
-     <form method="POST" action="{{ route('list-of-missing-person.update', $missing_report) }}" enctype="multipart/form-data">
+     <form method="POST" action="{{ route('user-list-of-missing-person.update', $missing_report) }}" enctype="multipart/form-data">
          @csrf
          @method('PUT')
         <div class="row row-cols-sm-1 mt-1 ">
@@ -84,7 +84,7 @@
                     <option value="Harari">Harari Regional State</option>
                     <option value="Addis Abeba">Addis Ababa City Adminstration</option>
                     <option value="Dire Dawa">Dire Dawa City Adminstration</option>
-                </select>             
+                </select>            
              </div>
         </div>
         <div class="row row-cols-1 row-cols-sm-2  mt-1 g-3">

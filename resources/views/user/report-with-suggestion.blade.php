@@ -1,4 +1,4 @@
-@extends('layouts.police_volunteer_app')
+@extends('layouts.app')
 
 @section('content')
 
@@ -22,13 +22,13 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="/police_volunteer/report-missing">Report Missing</a></li>
+              <li class="breadcrumb-item"><a href="/user/report-missing">Report Missing</a></li>
               <li class="breadcrumb-item active">Information missing date</li>
             </ol>
           </div><!-- /.col -->
        </div>
 
-      <form method="POST" action="{{ route('police-missing-date.store') }}">
+      <form method="POST" action="{{ route('user-missing-date.store') }}">
          @csrf
       <div class="row row-cols-sm-1 mt-1 ">
             <div class="col">

@@ -2,15 +2,20 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MissingPersonProfileController;
+use App\Http\Controllers\MissingPersonProfileUserController;
 use App\Http\Controllers\FoundPersonProfileController;
+use App\Http\Controllers\FoundPersonProfileUserController;
 use App\Http\Controllers\InfoMissingDateController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MyReportsController; 
 use App\Http\Controllers\FilterOutController; 
+use App\Http\Controllers\FilterOutUserController; 
 use App\Http\Controllers\MailController; 
 use App\Http\Controllers\MailSecondController; 
 use App\Http\Controllers\RespondMissingController;
 use App\Http\Controllers\RespondFoundController;
+use App\Http\Controllers\RespondMissingUserController;
+use App\Http\Controllers\RespondFoundUserController;
 use App\Http\Controllers\MeetPersonController;
 use App\Http\Controllers\ManageMissingPersonController;
 use App\Http\Controllers\ManageFoundPersonController;
@@ -18,21 +23,33 @@ use App\Http\Controllers\PoliceVolunteerController;
 
 
 
+   Route::group(['prefix' => 'user'], function() {
 
-
-    // Route::get('/share-social', [ShareSocialController::class,'shareSocial']);
-    Route::group(['prefix' => 'user'], function() {
+        Route::resource('user-list-of-missing-person', MissingPersonProfileUserController::class);
+        Route::resource('user-list-of-found-person', FoundPersonProfileUserController::class);
+        Route::resource('user-respond-missing',RespondMissingUserController::class);
+        Route::resource('user-respond-found',RespondFoundUserController::class);
+        Route::resource('my-reports',MyReportsController::class);
+        Route::resource('user-filter-out',FilterOutUserController::class);
 
         Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('user.home');
         Route::get('/report-missing',[App\Http\Controllers\MissingController::class, 'index'])->name('user.report-missing');
         Route::get('/report-found',[App\Http\Controllers\FoundController::class, 'index'])->name('user.report-found');
-        Route::get('/filter-out',[FilterOutController::class, 'create'])->name('user.filter-out');
         Route::get('/statistics', [App\Http\Controllers\StatisticsController::class, 'create'])->name('user.statistics');
         Route::get('/contact-us', [App\Http\Controllers\ContactUsController::class, 'create'])->name('user.contact-us');
         Route::get('/my-reports', [App\Http\Controllers\MyReportsController::class, 'create'])->name('user.my-reports');
-     
-        Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class, 'userLogout'])->name('user.logout');
+        Route::get('/filter-out', [FilterOutUserController::class, 'index'])->name('user.filter-out');
+        Route::get('/list-of-missing-person', [MissingPersonProfileUserController::class, 'index'])->name('user.list-of-missing-person');
+        Route::get('/list-of-found-person', [FoundPersonProfileUserController::class, 'index'])->name('user.list-of-found-person');
+        Route::post('/report-missing-person',[App\Http\Controllers\MissingController::class, 'store'])->name('user-missing-report.store');
+        Route::post('/info_missing',[App\Http\Controllers\InfoMissingDateController::class, 'store'])->name('user-missing-date.store');
+        Route::get('/report-with-suggestion',[App\Http\Controllers\InfoMissingDateController::class, 'create'])->name('user.report-with-suggestion');
+        Route::post('/report-found-person',[App\Http\Controllers\FoundController::class, 'store'])->name('user-found-report.store');
+        Route::post('/info_found',[App\Http\Controllers\InfoFoundDateController::class, 'store'])->name('user-found-date.store');
+        Route::get('/report-with-suggestion-found',[App\Http\Controllers\InfoFoundDateController::class, 'create'])->name('user.report-found-date');
 
+
+        Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class, 'userLogout'])->name('user.logout');
     
     });
 
@@ -44,7 +61,6 @@ use App\Http\Controllers\PoliceVolunteerController;
         });
         
         Route::group(['middleware' => 'police_volunteer.auth'], function(){
-            Route::get('/index',[App\Http\Controllers\PolicevolunteerController::class, 'index'])->name('police_volunteer.index');
 
             Route::resource('list-of-missing-person', MissingPersonProfileController::class);
             Route::resource('list-of-found-person', FoundPersonProfileController::class);
@@ -56,16 +72,14 @@ use App\Http\Controllers\PoliceVolunteerController;
 
             Route::get('/contact-us', [App\Http\Controllers\ContactUsController::class, 'index'])->name('police_volunteer.contact-us');
             Route::get('/statistics', [App\Http\Controllers\StatisticsController::class, 'index'])->name('police_volunteer.statistics');
-        
-
-
-            Route::post('/report-missing-person',[App\Http\Controllers\PoliceMissingPersonController::class, 'store'])->name('police_volunteer_missing.store');
-            Route::post('/info_missing',[App\Http\Controllers\InfoPoliceMissingDateController::class, 'store'])->name('info_police_missing_date.store');
+            Route::get('/index',[App\Http\Controllers\PolicevolunteerController::class, 'index'])->name('police_volunteer.index');
+            Route::post('/report-missing-person',[App\Http\Controllers\PoliceMissingPersonController::class, 'store'])->name('police-missing-report.store');
+            Route::post('/info_missing',[App\Http\Controllers\InfoPoliceMissingDateController::class, 'store'])->name('police-missing-date.store');
             Route::get('/report-missing',[App\Http\Controllers\PoliceMissingPersonController::class, 'create'])->name('police_volunteer.report-missing');
             Route::get('/report-with-suggestion',[App\Http\Controllers\InfoPoliceMissingDateController::class, 'create'])->name('police_volunteer.report-with-suggestion');
 
-            Route::post('/report-found-person',[App\Http\Controllers\PoliceFoundPersonController::class, 'store'])->name('police_volunteer_found.store');
-            Route::post('/info_found',[App\Http\Controllers\InfoPoliceFoundDateController::class, 'store'])->name('info_police_found_date.store');
+            Route::post('/report-found-person',[App\Http\Controllers\PoliceFoundPersonController::class, 'store'])->name('police-found-report.store');
+            Route::post('/info_found',[App\Http\Controllers\InfoPoliceFoundDateController::class, 'store'])->name('police-found-date.store');
             Route::get('/report-found',[App\Http\Controllers\PoliceFoundPersonController::class, 'create'])->name('police_volunteer.report-found');
             Route::get('/report-with-suggestion-found',[App\Http\Controllers\InfoPoliceFoundDateController::class, 'create'])->name('police_volunteer.report-found-date');
 

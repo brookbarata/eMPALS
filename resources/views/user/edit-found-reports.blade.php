@@ -1,37 +1,37 @@
-@extends('layouts.police_volunteer_app')
+@extends('layouts.app')
 
 @section('content')
     
 <div class="container">  
-<h3 class="text-center fw-bold">Edit Missing Person</h3>
+<h3 class="text-center fw-bold">Edit Found Person</h3>
 
     <div class="row  row-cols-sm-1 row-cols-md-2 g-3">
                 <div class=" col-md-8">
                 @if(session('danger'))
                     <p class="alert alert-danger "> {{ session('danger') }} </p>
-                @endif    
+                @endif
                 <div class="alert alert-warning p-2" role="alert">
-                   Please edit with some valid inputs Thank you!
+                   Please edit with some valid inputs, Thank you!
                     </div>
-     <form method="POST" action="{{ route('list-of-missing-person.update', $missing_report) }}" enctype="multipart/form-data">
+      <form method="POST" action="{{ route('user-list-of-found-person.update', $found_report) }}" enctype="multipart/form-data">
          @csrf
          @method('PUT')
         <div class="row row-cols-sm-1 mt-1 ">
             <div class="col">
-                <h4 class="fw-bold">Edit Basic Information About Missing Person</h4>
+                <h4 class="fw-bold">Edit Basic Information About Found Person</h4>
             </div>
         </div>
             <div class="row row-cols-1 row-cols-sm-2 g-3">
                 <div class="col">
-                <input type="text" class="form-control" name="fname" required placeholder="First name" value="{{ ( $missing_report->fname) }}">
+                <input type="text" class="form-control" name="fname" required placeholder="First name" value="{{ ( $found_report->fname) }}">
                 </div>
                 <div class="col">
-                <input type="text" class="form-control" name="mname" required placeholder="Middle name" value="{{ ( $missing_report->mname) }}">
+                <input type="text" class="form-control" name="mname" required placeholder="Middle name" value="{{ ( $found_report->mname) }}">
                 </div>
             </div>
             <div class="row row-cols-1 row-cols-sm-2  g-3 mt-1">
                 <div class="col">
-                <input type="text" class="form-control" name="lname" required placeholder="Last name" value="{{ ( $missing_report->lname) }}">
+                <input type="text" class="form-control" name="lname" required placeholder="Last name" value="{{ ( $found_report->lname) }}">
                 </div>
              <div class="col mt-4">
                <div class="form-check form-check-inline">
@@ -50,23 +50,23 @@
          </div>
          <div class="row row-cols-1 row-cols-sm-2  mt-1 g-3">
                 <div class="col">
-                <input type="number" class="form-control" name="age" required placeholder="Age" min=0 max=300  value="{{ ( $missing_report->age) }}">
+                <input type="number" class="form-control" name="age" required placeholder="Age" min=0 max=300  value="{{ ( $found_report->age) }}">
                 </div>
                 <div class="col">
-                <input type="text" class="form-control" name="brith_place" placeholder="Brith Place (City)"  value="{{ ( $missing_report->brith_place) }}">
+                <input type="text" class="form-control" name="brith_place" placeholder="Brith Place (City)"  value="{{ ( $found_report->brith_place) }}">
                 </div>
         </div>
         <div class="row row-cols-1 row-cols-sm-2  mt-1 g-3">
             <div class="col">
-                <input type="text" class="form-control" name="nick_name" placeholder="Nick Name"  value="{{ ( $missing_report->nick_name) }}" >
+                <input type="text" class="form-control" name="nick_name" placeholder="Nick Name"  value="{{ ( $found_report->nick_name) }}" >
                 </div>
             <div class="col">
-                <input type="number" step="any" class="form-control" required name="height" placeholder="Height (m)" min=0 max=3  value="{{ ( $missing_report->height) }}">
+                <input type="number" step="any" class="form-control" required name="height" placeholder="Height (m)" min=0 max=3  value="{{ ( $found_report->height) }}">
               </div>
         </div>
         <div class="row row-cols-1 row-cols-sm-2  mt-1 g-3">
             <div class="col"> 
-                <input type="number"  step="any"  class="form-control" required name="weight" placeholder="Weight (Kg)" min=0 max=300  value="{{ ( $missing_report->weight) }}">
+                <input type="number"  step="any"  class="form-control" required name="weight" placeholder="Weight (Kg)" min=0 max=300  value="{{ ( $found_report->weight) }}">
                 </div>
             <div class="col">
             <select class="form-select" name="region" >
@@ -84,31 +84,31 @@
                     <option value="Harari">Harari Regional State</option>
                     <option value="Addis Abeba">Addis Ababa City Adminstration</option>
                     <option value="Dire Dawa">Dire Dawa City Adminstration</option>
-                </select>             
+                </select>            
              </div>
         </div>
         <div class="row row-cols-1 row-cols-sm-2  mt-1 g-3">
             <div class="col">
-                <input type="text" class="form-control" required name="city" placeholder="City"  value="{{ ( $missing_report->city) }}">
+                <input type="text" class="form-control" required name="city" placeholder="City"  value="{{ ( $found_report->city) }}">
                 </div>
             <div class="col">
-                <input type="text" class="form-control" required name="sub_city" placeholder="Sub City"  value="{{ ( $missing_report->sub_city) }}">
+                <input type="text" class="form-control" required name="sub_city" placeholder="Sub City"  value="{{ ( $found_report->sub_city) }}">
               </div>
         </div>
         <div class="row row-cols-1 row-cols-sm-2  mt-1 g-3">
             <div class="col">
-                <input type="text" class="form-control" required name="street_name" placeholder="Street"  value="{{ ( $missing_report->street_name) }}">
+                <input type="text" class="form-control" required name="street_name" placeholder="Street"  value="{{ ( $found_report->street_name) }}">
                 </div>
             <div class="col">
-                <input type="number" class="form-control" required name="house_no" placeholder="House Number"  value="{{ ( $missing_report->house_no) }}">
+                <input type="number" class="form-control" required name="house_no" placeholder="House Number"  value="{{ ( $found_report->house_no) }}">
               </div>
         </div>
         <div class="row row-cols-1 row-cols-sm-2  mt-1 g-3">
             <div class="col">
-                <textarea type="text" class="form-control" required name="special_description" placeholder="Special Markings -such as tattoos, birthmarks, scars, etc."  value="{{ ( $missing_report->special_description) }}"></textarea>
+                <textarea type="text" class="form-control" required name="special_description" placeholder="Special Markings -such as tattoos, birthmarks, scars, etc."  value="{{ ( $found_report->special_description) }}"></textarea>
                 </div>
             <div class="col">
-                <input type="file" class="form-control" accept=".jpg,.png,.gif,.webp" name="photo"  value="{{ ( $missing_report->photo) }}">
+                <input type="file" class="form-control" accept=".jpg,.png,.gif,.webp" name="photo"  value="{{ ( $found_report->photo) }}">
                 <label class="alert alert-warning p-0 px-4" for="file">!!! Upload here the most recent picture of found person.</label>  
             </div>
         </div>
@@ -123,7 +123,7 @@
 
         </div>
                 <div class ="col-md-3">
-                        <h5 class="text-center bg-dark rounded p-1 text-white">How eMPALS works to find missing person?</h5>
+                        <h5 class="text-center bg-dark rounded p-1 text-white">How eMPALS works to find found person?</h5>
                     <div  class=" card bg-light rounded card-body" style="text-align:justify;">
                         Electronic Missing Person Announcement and Locating System (eMPALS) contains 
                         functionality to add complaints as well as view all complaints. By using these complaints, Users
